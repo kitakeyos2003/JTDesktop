@@ -38,7 +38,7 @@ public class LogTextArea extends JTextArea {
     private static final long serialVersionUID = 1L;
 
     //private int maxLines = 20;
-    private LogTextCaret caret;
+    private final LogTextCaret caret;
 
     public LogTextArea(int rows, int columns, int maxLines) {
         super(rows, columns);

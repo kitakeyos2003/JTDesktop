@@ -44,9 +44,7 @@ public class ExtensionFileFilter extends FileFilter {
                 return true;
             }
             String ext = getExtension(file);
-            if (ext != null && extensions.get(ext) != null) {
-                return true;
-            }
+            return ext != null && extensions.get(ext) != null;
         }
 
         return false;

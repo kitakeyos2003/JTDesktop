@@ -80,12 +80,8 @@ public class Rectangle extends Shape {
     }
 
     public boolean contains(int x, int y) {
-        if (x >= this.x && x < this.x + this.width && y >= this.y
-                && y < this.y + this.height) {
-            return true;
-        } else {
-            return false;
-        }
+        return x >= this.x && x < this.x + this.width && y >= this.y
+                && y < this.y + this.height;
     }
 
     public Rectangle getBounds() {
@@ -93,9 +89,7 @@ public class Rectangle extends Shape {
     }
 
     public String toString() {
-        StringBuffer buf = new StringBuffer();
-        buf.append(x).append(",").append(y).append(" ").append(this.width).append("x").append(this.height);
-        return buf.toString();
+        return x + "," + y + " " + this.width + "x" + this.height;
     }
 
 }

@@ -26,7 +26,7 @@ public class ChoiceGroup extends Item implements Choice {
 
     int choiceType;
 
-    private ChoiceItem items[] = new ChoiceItem[4];
+    private ChoiceItem[] items = new ChoiceItem[4];
 
     private int numOfItems = 0;
 
@@ -36,7 +36,7 @@ public class ChoiceGroup extends Item implements Choice {
 
     private List popupList;
 
-    private static byte multiOff[] = {
+    private static final byte[] multiOff = {
         -119, 80, 78, 71, 13, 10, 26, 10, 0, 0,
         0, 13, 73, 72, 68, 82, 0, 0, 0, 10,
         0, 0, 0, 11, 2, 3, 0, 0, 0, 59,
@@ -50,7 +50,7 @@ public class ChoiceGroup extends Item implements Choice {
         68, -82, 66, 96, -126
     };
 
-    private static byte multiOn[] = {
+    private static final byte[] multiOn = {
         -119, 80, 78, 71, 13, 10, 26, 10, 0, 0,
         0, 13, 73, 72, 68, 82, 0, 0, 0, 10,
         0, 0, 0, 11, 2, 3, 0, 0, 0, 59,
@@ -67,7 +67,7 @@ public class ChoiceGroup extends Item implements Choice {
         -82, 66, 96, -126
     };
 
-    private static byte radioOff[] = {
+    private static final byte[] radioOff = {
         -119, 80, 78, 71, 13, 10, 26, 10, 0, 0,
         0, 13, 73, 72, 68, 82, 0, 0, 0, 11,
         0, 0, 0, 11, 2, 3, 0, 0, 0, -44,
@@ -82,7 +82,7 @@ public class ChoiceGroup extends Item implements Choice {
         0, 0, 73, 69, 78, 68, -82, 66, 96, -126
     };
 
-    private static byte radioOn[] = {
+    private static final byte[] radioOn = {
         -119, 80, 78, 71, 13, 10, 26, 10, 0, 0,
         0, 13, 73, 72, 68, 82, 0, 0, 0, 11,
         0, 0, 0, 11, 2, 3, 0, 0, 0, -44,
@@ -241,7 +241,7 @@ public class ChoiceGroup extends Item implements Choice {
         int selectedItemsCount = 0;
 
         for (int i = 0; i < selectedArray_return.length; ++i) {
-            selectedArray_return[i] = (i < numOfItems) ? items[i].isSelected() : false;
+            selectedArray_return[i] = i < numOfItems && items[i].isSelected();
             if (selectedArray_return[i]) {
                 ++selectedItemsCount;
             }
@@ -299,7 +299,7 @@ public class ChoiceGroup extends Item implements Choice {
         }
 
         if (numOfItems == items.length /*no space left in item array*/) {
-            ChoiceItem newItems[] = new ChoiceItem[numOfItems + 4];
+            ChoiceItem[] newItems = new ChoiceItem[numOfItems + 4];
             System.arraycopy(items, 0, newItems, 0, numOfItems);
             items = newItems;
         }

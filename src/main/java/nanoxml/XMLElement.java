@@ -150,7 +150,7 @@ public class XMLElement {
      * </dd>
      * </dl>
      */
-    private Hashtable attributes;
+    private final Hashtable attributes;
 
     /**
      * Child elements of the element.
@@ -167,7 +167,7 @@ public class XMLElement {
      * </dd>
      * </dl>
      */
-    private Vector children;
+    private final Vector children;
 
     /**
      * The name of the element.
@@ -222,7 +222,7 @@ public class XMLElement {
      * </dd>
      * </dl>
      */
-    private Hashtable entities;
+    private final Hashtable entities;
 
     /**
      * The line number where the element starts.
@@ -236,19 +236,19 @@ public class XMLElement {
      * </dd>
      * </dl>
      */
-    private int lineNr;
+    private final int lineNr;
 
     /**
      * <code>true</code> if the case of the element and attribute names are case
      * insensitive.
      */
-    private boolean ignoreCase;
+    private final boolean ignoreCase;
 
     /**
      * <code>true</code> if the leading and trailing whitespace of #PCDATA
      * sections have to be ignored.
      */
-    private boolean ignoreWhitespace;
+    private final boolean ignoreWhitespace;
 
     /**
      * Character read too much. This character provides push-back functionality
@@ -2323,7 +2323,7 @@ public class XMLElement {
             OutputStreamWriter writer = new OutputStreamWriter(out);
             this.write(writer);
             writer.flush();
-            return new String(out.toByteArray());
+            return out.toString();
         } catch (IOException e) {
             // Java exception handling suxx
             return super.toString();
@@ -2493,7 +2493,7 @@ public class XMLElement {
                     break;
 
                 default:
-                    int unicode = (int) ch;
+                    int unicode = ch;
 
                     if ((unicode < 32) || (unicode > 126)) {
                         writer.write('&');

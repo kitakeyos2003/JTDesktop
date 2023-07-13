@@ -63,7 +63,7 @@ public class Display {
 
     private DisplayAccessor accessor = null;
 
-    private EventDispatcher eventDispatcher;
+    private final EventDispatcher eventDispatcher;
 
     private final class GaugePaintTask implements Runnable {
 
@@ -131,9 +131,9 @@ public class Display {
 
         static final short KEY_REPEATED = 2;
 
-        private short type;
+        private final short type;
 
-        private int keyCode;
+        private final int keyCode;
 
         KeyEvent(short type, int keyCode) {
             eventDispatcher.super();
@@ -321,7 +321,7 @@ public class Display {
             Displayable current = getCurrent();
 
             if (current instanceof Canvas) {
-                return ((Canvas) current).fullScreenMode;
+                return current.fullScreenMode;
             } else {
                 return false;
             }
@@ -494,7 +494,7 @@ public class Display {
                     if (current != null) {
                         eventDispatcher.put(eventDispatcher.new HideNotifyEvent(new Runnable() {
 
-                            private Displayable displayable = current;
+                            private final Displayable displayable = current;
 
                             public void run() {
                                 displayable.hideNotify(Display.this);
@@ -572,11 +572,7 @@ public class Display {
     }
 
     boolean isShown(Displayable d) {
-        if (current == null || current != d) {
-            return false;
-        } else {
-            return true;
-        }
+        return current != null && current == d;
     }
 
     void repaint(Displayable d, int x, int y, int width, int height) {

@@ -65,7 +65,7 @@ public class Config {
 
     private static EmulatorContext emulatorContext;
 
-    private static MRUList urlsMRU = new MRUList(MidletURLReference.class, "midlet");
+    private static final MRUList urlsMRU = new MRUList(MidletURLReference.class, "midlet");
 
     private static File initMEHomePath() {
         try {
@@ -182,7 +182,7 @@ public class Config {
             if (!extension.getName().equals("extension")) {
                 continue;
             }
-            String className = (String) extension.getChildString("className", null);
+            String className = extension.getChildString("className", null);
             if (className == null) {
                 continue;
             }
@@ -238,8 +238,8 @@ public class Config {
             for (Iterator i = systemProperties.entrySet().iterator(); i.hasNext();) {
                 Map.Entry e = (Map.Entry) i.next();
                 XMLElement xmlProperty = propertiesXml.addChild("system-property");
-                xmlProperty.setAttribute("value", (String) e.getValue());
-                xmlProperty.setAttribute("name", (String) e.getKey());
+                xmlProperty.setAttribute("value", e.getValue());
+                xmlProperty.setAttribute("name", e.getKey());
             }
 
             saveConfig();
@@ -444,11 +444,7 @@ public class Config {
         }
 
         String attr = mainXml.getStringAttribute("onstart", "false");
-        if (attr.trim().toLowerCase().equals("true")) {
-            return true;
-        } else {
-            return false;
-        }
+        return attr.trim().equalsIgnoreCase("true");
     }
 
     public static Rectangle getWindow(String name, Rectangle defaultWindow) {

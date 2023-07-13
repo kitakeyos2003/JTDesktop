@@ -61,9 +61,9 @@ public class SwingLogConsoleDialog extends JFrame implements LoggerAppender {
 
     private boolean isShown;
 
-    private LogTextArea logArea;
+    private final LogTextArea logArea;
 
-    private Vector logLinesQueue = new Vector();
+    private final Vector logLinesQueue = new Vector();
 
     private int testEventCounter = 0;
 
@@ -234,7 +234,7 @@ public class SwingLogConsoleDialog extends JFrame implements LoggerAppender {
             PrintStream stream = new PrintStream(out);
             event.getThrowable().printStackTrace(stream);
             stream.flush();
-            bug.append(out.toString());
+            bug.append(out);
         }
         bug.append("\n");
         log(bug.toString());

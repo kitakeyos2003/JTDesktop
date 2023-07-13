@@ -27,7 +27,7 @@ import org.microemu.midp.media.TimeBase;
 
 class PCTimeBase implements TimeBase {
 
-    private static long timeBase = System.currentTimeMillis();
+    private static final long timeBase = System.currentTimeMillis();
 
     public long getTime() {
         return (System.currentTimeMillis() - timeBase);

@@ -34,7 +34,7 @@ import com.barteo.emulator.device.Device;
 
 public class DeviceEntry {
 
-    private String name;
+    private final String name;
 
     private String fileName;
 
@@ -42,7 +42,7 @@ public class DeviceEntry {
 
     private boolean defaultDevice;
 
-    private boolean canRemove;
+    private final boolean canRemove;
 
     /**
      * @deprecated
@@ -137,11 +137,7 @@ public class DeviceEntry {
         if (test == null) {
             return false;
         }
-        if (test.getDescriptorLocation().equals(getDescriptorLocation())) {
-            return true;
-        }
-
-        return false;
+        return test.getDescriptorLocation().equals(getDescriptorLocation());
     }
 
     public String toString() {

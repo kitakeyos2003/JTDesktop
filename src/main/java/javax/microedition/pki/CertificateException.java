@@ -44,8 +44,8 @@ public class CertificateException extends IOException {
     public static final byte UNSUPPORTED_PUBLIC_KEY_TYPE = 13;
     public static final byte VERIFICATION_FAILED = 14;
 
-    private Certificate certificate;
-    private byte status;
+    private final Certificate certificate;
+    private final byte status;
 
     public CertificateException(Certificate certificate, byte status) {
         super();

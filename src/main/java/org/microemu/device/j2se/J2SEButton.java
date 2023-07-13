@@ -37,19 +37,19 @@ import org.microemu.device.impl.Shape;
 
 public class J2SEButton implements Button {
 
-    private String name;
+    private final String name;
 
     private ButtonName functionalName;
 
-    private Shape shape;
+    private final Shape shape;
 
     private int[] keyboardKeys;
 
-    private String keyboardCharCodes;
+    private final String keyboardCharCodes;
 
-    private int keyCode;
+    private final int keyCode;
 
-    private Hashtable inputToChars;
+    private final Hashtable inputToChars;
 
     private boolean modeChange;
 

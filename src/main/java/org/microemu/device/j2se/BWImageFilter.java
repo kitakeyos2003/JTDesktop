@@ -29,7 +29,9 @@ import org.microemu.device.DeviceFactory;
 
 public class BWImageFilter extends RGBImageFilter {
 
-    private double Yr, Yg, Yb;
+    private final double Yr;
+    private final double Yg;
+    private final double Yb;
 
     public BWImageFilter() {
         this(0.2126d, 0.7152d, 0.0722d);

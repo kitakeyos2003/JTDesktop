@@ -68,12 +68,12 @@ public class MIDletClassLoader extends URLClassLoader {
 
     private boolean findPathInParent = false;
 
-    private InstrumentationConfig config;
+    private final InstrumentationConfig config;
 
-    private Set noPreporcessingNames;
+    private final Set noPreporcessingNames;
 
     /* The context to be used when loading classes and resources */
-    private AccessControlContext acc;
+    private final AccessControlContext acc;
 
     private static class LoadClassByParentException extends ClassNotFoundException {
 
@@ -312,10 +312,7 @@ public class MIDletClassLoader extends URLClassLoader {
         if (className.startsWith("javax.")) {
             return true;
         }
-        if (noPreporcessingNames.contains(className)) {
-            return true;
-        }
-        return false;
+        return noPreporcessingNames.contains(className);
     }
 
     /**

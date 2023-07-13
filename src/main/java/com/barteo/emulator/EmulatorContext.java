@@ -37,7 +37,7 @@ import org.microemu.device.InputMethod;
  */
 public class EmulatorContext implements org.microemu.EmulatorContext {
 
-    private org.microemu.EmulatorContext context;
+    private final org.microemu.EmulatorContext context;
 
     public EmulatorContext(org.microemu.EmulatorContext context) {
         this.context = context;

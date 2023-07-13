@@ -33,9 +33,9 @@ public class RecordStoreChangePanel extends SwingDialogPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private Common common;
+    private final Common common;
 
-    private JComboBox selectStoreCombo = new JComboBox(new String[]{"File record store", "Memory record store"});
+    private final JComboBox selectStoreCombo = new JComboBox(new String[]{"File record store", "Memory record store"});
 
     public RecordStoreChangePanel(Common common) {
         this.common = common;

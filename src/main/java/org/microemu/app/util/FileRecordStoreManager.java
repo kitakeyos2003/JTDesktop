@@ -60,7 +60,7 @@ public class FileRecordStoreManager implements RecordStoreManager {
 
     private MicroEmulator emulator;
 
-    private Hashtable testOpenRecordStores = new Hashtable();
+    private final Hashtable testOpenRecordStores = new Hashtable();
 
     private ExtendedRecordListener recordListener = null;
 
@@ -78,13 +78,9 @@ public class FileRecordStoreManager implements RecordStoreManager {
         replaceChars.add("\"");
     }
 
-    private FilenameFilter filter = new FilenameFilter() {
+    private final FilenameFilter filter = new FilenameFilter() {
         public boolean accept(File dir, String name) {
-            if (name.endsWith(RECORD_STORE_SUFFIX)) {
-                return true;
-            } else {
-                return false;
-            }
+            return name.endsWith(RECORD_STORE_SUFFIX);
         }
     };
 
@@ -130,7 +126,7 @@ public class FileRecordStoreManager implements RecordStoreManager {
         return fileName.substring(0, fileName.length() - RECORD_STORE_SUFFIX.length());
     }
 
-    public void deleteRecordStore(final String recordStoreName) throws RecordStoreNotFoundException,
+    public void deleteRecordStore(final String recordStoreName) throws
             RecordStoreException {
         final File storeFile = new File(getRMSFolder(), recordStoreName2FileName(recordStoreName));
 
@@ -208,7 +204,7 @@ public class FileRecordStoreManager implements RecordStoreManager {
         return result;
     }
 
-    public void saveChanges(RecordStoreImpl recordStoreImpl) throws RecordStoreNotOpenException, RecordStoreException {
+    public void saveChanges(RecordStoreImpl recordStoreImpl) throws RecordStoreException {
 
         File storeFile = new File(getRMSFolder(), recordStoreName2FileName(recordStoreImpl.getName()));
 

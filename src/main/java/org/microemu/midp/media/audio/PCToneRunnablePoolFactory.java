@@ -32,7 +32,7 @@ import javax.sound.sampled.SourceDataLine;
 
 public class PCToneRunnablePoolFactory {
 
-    private static Stack pcToneRunnableStack = new Stack();
+    private static final Stack pcToneRunnableStack = new Stack();
 
     private PCToneRunnablePoolFactory() {
 

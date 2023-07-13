@@ -46,12 +46,12 @@ public class ImplFactory {
 
     private static final String IMPLEMENTATION_NAME_SUFIX = "Impl";
 
-    private Map implementations = new HashMap();
+    private final Map implementations = new HashMap();
 
-    private Map implementationsGCF = new HashMap();
+    private final Map implementationsGCF = new HashMap();
 
     /* The context to be used when loading classes and resources */
-    private AccessControlContext acc;
+    private final AccessControlContext acc;
 
     /**
      * Allow default initialization. In Secure environment instance() should be
@@ -59,7 +59,7 @@ public class ImplFactory {
      */
     private static class SingletonHolder {
 
-        private static ImplFactory instance = new ImplFactory();
+        private static final ImplFactory instance = new ImplFactory();
     }
 
     private ImplFactory() {

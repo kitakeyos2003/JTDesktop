@@ -38,14 +38,14 @@ public class Polygon extends Shape {
     /**
      * Array of points.
      */
-    public int xpoints[];
+    public int[] xpoints;
 
     /**
      * Array of points.
      */
     public int[] ypoints;
 
-    private Rectangle bounds = new Rectangle();
+    private final Rectangle bounds = new Rectangle();
 
     /**
      * Create an empty polygon.
@@ -94,8 +94,8 @@ public class Polygon extends Shape {
      */
     public void addPoint(int x, int y) {
         if (npoints > 0) {
-            int xtemp[];
-            int ytemp[];
+            int[] xtemp;
+            int[] ytemp;
             xtemp = xpoints;
             ytemp = ypoints;
             xpoints = new int[npoints + 1];

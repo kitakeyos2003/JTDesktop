@@ -25,7 +25,7 @@ package org.microemu.device.impl;
 
 public class Color {
 
-    private int value;
+    private final int value;
 
     public Color(int value) {
         this.value = value;

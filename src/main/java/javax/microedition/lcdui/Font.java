@@ -43,15 +43,15 @@ public final class Font {
 
     private static final Font DEFAULT_FONT = new Font(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_MEDIUM);
 
-    private static Font[] fontsBySpecifier = {DEFAULT_FONT, DEFAULT_FONT};
+    private static final Font[] fontsBySpecifier = {DEFAULT_FONT, DEFAULT_FONT};
 
-    private static Hashtable fonts = new Hashtable();
+    private static final Hashtable fonts = new Hashtable();
 
-    private int face;
+    private final int face;
 
-    private int style;
+    private final int style;
 
-    private int size;
+    private final int size;
 
     private int baselinePosition = -1;
 
@@ -108,35 +108,19 @@ public final class Font {
     }
 
     public boolean isPlain() {
-        if (style == STYLE_PLAIN) {
-            return true;
-        } else {
-            return false;
-        }
+        return style == STYLE_PLAIN;
     }
 
     public boolean isBold() {
-        if ((style & STYLE_BOLD) != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (style & STYLE_BOLD) != 0;
     }
 
     public boolean isItalic() {
-        if ((style & STYLE_ITALIC) != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (style & STYLE_ITALIC) != 0;
     }
 
     public boolean isUnderlined() {
-        if ((style & STYLE_UNDERLINED) != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (style & STYLE_UNDERLINED) != 0;
     }
 
     public int getHeight() {

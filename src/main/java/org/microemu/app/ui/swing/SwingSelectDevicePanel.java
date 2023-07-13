@@ -64,21 +64,21 @@ public class SwingSelectDevicePanel extends SwingDialogPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private EmulatorContext emulatorContext;
+    private final EmulatorContext emulatorContext;
 
-    private JScrollPane spDevices;
+    private final JScrollPane spDevices;
 
-    private JButton btAdd;
+    private final JButton btAdd;
 
-    private JButton btRemove;
+    private final JButton btRemove;
 
-    private JButton btDefault;
+    private final JButton btDefault;
 
-    private DefaultListModel lsDevicesModel;
+    private final DefaultListModel lsDevicesModel;
 
-    private JList lsDevices;
+    private final JList lsDevices;
 
-    private ActionListener btAddListener = new ActionListener() {
+    private final ActionListener btAddListener = new ActionListener() {
         private JFileChooser fileChooser = null;
 
         public void actionPerformed(ActionEvent ev) {
@@ -149,9 +149,7 @@ public class SwingSelectDevicePanel extends SwingDialogPanel {
 
                 for (Enumeration en = lsDevicesModel.elements(); en.hasMoreElements();) {
                     DeviceEntry entry = (DeviceEntry) en.nextElement();
-                    if (devices.containsKey(entry.getDescriptorLocation())) {
-                        devices.remove(entry.getDescriptorLocation());
-                    }
+                    devices.remove(entry.getDescriptorLocation());
                 }
                 if (devices.size() == 0) {
                     Message.info("Device profile already added");
@@ -180,13 +178,12 @@ public class SwingSelectDevicePanel extends SwingDialogPanel {
                     lsDevices.setSelectedValue(entry, true);
                 } catch (IOException e) {
                     Message.error("Error adding device profile, " + Message.getCauseMessage(e), e);
-                    return;
                 }
             }
         }
     };
 
-    private ActionListener btRemoveListener = new ActionListener() {
+    private final ActionListener btRemoveListener = new ActionListener() {
         public void actionPerformed(ActionEvent ev) {
             DeviceEntry entry = (DeviceEntry) lsDevices.getSelectedValue();
 
@@ -217,16 +214,12 @@ public class SwingSelectDevicePanel extends SwingDialogPanel {
         }
     };
 
-    private ActionListener btDefaultListener = new ActionListener() {
+    private final ActionListener btDefaultListener = new ActionListener() {
         public void actionPerformed(ActionEvent ev) {
             DeviceEntry entry = (DeviceEntry) lsDevices.getSelectedValue();
             for (Enumeration en = lsDevicesModel.elements(); en.hasMoreElements();) {
                 DeviceEntry tmp = (DeviceEntry) en.nextElement();
-                if (tmp == entry) {
-                    tmp.setDefaultDevice(true);
-                } else {
-                    tmp.setDefaultDevice(false);
-                }
+                tmp.setDefaultDevice(tmp == entry);
                 Config.changeDeviceEntry(tmp);
             }
             lsDevices.repaint();
@@ -238,16 +231,8 @@ public class SwingSelectDevicePanel extends SwingDialogPanel {
         public void valueChanged(ListSelectionEvent ev) {
             DeviceEntry entry = (DeviceEntry) lsDevices.getSelectedValue();
             if (entry != null) {
-                if (entry.isDefaultDevice()) {
-                    btDefault.setEnabled(false);
-                } else {
-                    btDefault.setEnabled(true);
-                }
-                if (entry.canRemove()) {
-                    btRemove.setEnabled(true);
-                } else {
-                    btRemove.setEnabled(false);
-                }
+                btDefault.setEnabled(!entry.isDefaultDevice());
+                btRemove.setEnabled(entry.canRemove());
                 btOk.setEnabled(true);
             } else {
                 btDefault.setEnabled(false);

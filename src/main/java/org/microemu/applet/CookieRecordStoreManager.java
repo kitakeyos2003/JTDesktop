@@ -58,13 +58,13 @@ public class CookieRecordStoreManager implements RecordStoreManager {
 
     private ExtendedRecordListener recordListener = null;
 
-    private Applet applet;
+    private final Applet applet;
 
     private JSObject document;
 
     private HashMap cookies;
 
-    private String expires;
+    private final String expires;
 
     public CookieRecordStoreManager(Applet applet) {
         this.applet = applet;
@@ -83,7 +83,7 @@ public class CookieRecordStoreManager implements RecordStoreManager {
         return this.getClass().toString();
     }
 
-    public void deleteRecordStore(String recordStoreName) throws RecordStoreNotFoundException, RecordStoreException {
+    public void deleteRecordStore(String recordStoreName) throws RecordStoreException {
         CookieContent cookieContent = (CookieContent) cookies.get(recordStoreName);
         if (cookieContent == null) {
             throw new RecordStoreNotFoundException(recordStoreName);
@@ -109,7 +109,7 @@ public class CookieRecordStoreManager implements RecordStoreManager {
     }
 
     public void init() {
-        JSObject window = (JSObject) JSObject.getWindow(applet);
+        JSObject window = JSObject.getWindow(applet);
         document = (JSObject) window.getMember("document");
         cookies = new HashMap();
 

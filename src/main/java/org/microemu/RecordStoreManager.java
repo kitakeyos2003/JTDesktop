@@ -33,13 +33,13 @@ public interface RecordStoreManager {
 
     String getName();
 
-    void deleteRecordStore(String recordStoreName) throws RecordStoreNotFoundException, RecordStoreException;
+    void deleteRecordStore(String recordStoreName) throws RecordStoreException;
 
     RecordStore openRecordStore(String recordStoreName, boolean createIfNecessary) throws RecordStoreException;
 
     String[] listRecordStores();
 
-    void saveChanges(RecordStoreImpl recordStoreImpl) throws RecordStoreNotOpenException, RecordStoreException;
+    void saveChanges(RecordStoreImpl recordStoreImpl) throws RecordStoreException;
 
     int getSizeAvailable(RecordStoreImpl recordStoreImpl);
 

@@ -39,15 +39,15 @@ import javax.microedition.rms.RecordStoreNotOpenException;
 
 public class RecordEnumerationImpl implements RecordEnumeration {
 
-    private RecordStoreImpl recordStoreImpl;
-    private RecordFilter filter;
-    private RecordComparator comparator;
+    private final RecordStoreImpl recordStoreImpl;
+    private final RecordFilter filter;
+    private final RecordComparator comparator;
     private boolean keepUpdated;
 
-    private Vector enumerationRecords = new Vector();
+    private final Vector enumerationRecords = new Vector();
     private int currentRecord;
 
-    private RecordListener recordListener = new RecordListener() {
+    private final RecordListener recordListener = new RecordListener() {
 
         public void recordAdded(RecordStore recordStore, int recordId) {
             rebuild();
@@ -81,7 +81,7 @@ public class RecordEnumerationImpl implements RecordEnumeration {
     }
 
     public byte[] nextRecord()
-            throws InvalidRecordIDException, RecordStoreNotOpenException, RecordStoreException {
+            throws RecordStoreException {
         if (!recordStoreImpl.isOpen()) {
             throw new RecordStoreNotOpenException();
         }
@@ -111,7 +111,7 @@ public class RecordEnumerationImpl implements RecordEnumeration {
     }
 
     public byte[] previousRecord()
-            throws InvalidRecordIDException, RecordStoreNotOpenException, RecordStoreException {
+            throws RecordStoreException {
         if (!recordStoreImpl.isOpen()) {
             throw new RecordStoreNotOpenException();
         }
@@ -140,19 +140,11 @@ public class RecordEnumerationImpl implements RecordEnumeration {
     }
 
     public boolean hasNextElement() {
-        if (currentRecord == numRecords()) {
-            return false;
-        } else {
-            return true;
-        }
+        return currentRecord != numRecords();
     }
 
     public boolean hasPreviousElement() {
-        if (currentRecord == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return currentRecord != 0;
     }
 
     public void reset() {

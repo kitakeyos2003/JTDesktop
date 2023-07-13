@@ -190,7 +190,7 @@ public class MIDletBridge {
         gameCanvasAccesses.put(gameCanvas, access);
     }
 
-    private static ArrayList players = new ArrayList();
+    private static final ArrayList players = new ArrayList();
 
     public static void addMediaPlayer(Player player) {
         players.add(player);

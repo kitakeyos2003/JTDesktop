@@ -39,7 +39,7 @@ public class EventDispatcher implements Runnable {
 
     private PointerEvent scheduledPointerDraggedEvent = null;
 
-    private Object serviceRepaintsLock = new Object();
+    private final Object serviceRepaintsLock = new Object();
 
     private long lastPaintEventTime = 0;
 
@@ -185,7 +185,7 @@ public class EventDispatcher implements Runnable {
          *
          * @param event
          */
-        public final void merge(PaintEvent event) {
+        public void merge(PaintEvent event) {
             int xMax = x + width;
             int yMax = y + height;
 
@@ -209,9 +209,9 @@ public class EventDispatcher implements Runnable {
 
         public static final short POINTER_DRAGGED = 2;
 
-        private Runnable runnable;
+        private final Runnable runnable;
 
-        private short type;
+        private final short type;
 
         private int x;
 
@@ -231,7 +231,7 @@ public class EventDispatcher implements Runnable {
 
     public final class ShowNotifyEvent extends Event {
 
-        private Runnable runnable;
+        private final Runnable runnable;
 
         public ShowNotifyEvent(Runnable runnable) {
             this.runnable = runnable;
@@ -244,7 +244,7 @@ public class EventDispatcher implements Runnable {
 
     public final class HideNotifyEvent extends Event {
 
-        private Runnable runnable;
+        private final Runnable runnable;
 
         public HideNotifyEvent(Runnable runnable) {
             this.runnable = runnable;
@@ -257,7 +257,7 @@ public class EventDispatcher implements Runnable {
 
     private class RunnableEvent extends Event {
 
-        private Runnable runnable;
+        private final Runnable runnable;
 
         public RunnableEvent(Runnable runnable) {
             this.runnable = runnable;

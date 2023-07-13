@@ -43,7 +43,7 @@ public class ThreadUtils {
      */
     public static Timer createTimer(String name) {
         try {
-            Constructor c = Timer.class.getConstructor(new Class[]{String.class});
+            Constructor c = Timer.class.getConstructor(String.class);
             return (Timer) c.newInstance(new Object[]{name});
         } catch (Throwable e) {
             // In cany case create new Timer

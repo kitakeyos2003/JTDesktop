@@ -186,16 +186,16 @@ public class J2SEDeviceDisplay implements DeviceDisplayImpl {
         g.setColor(foregroundColor);
 
         java.awt.Shape oldclip = g.getClip();
-        if (!(current instanceof Canvas) || ((Canvas) current).getWidth() != displayRectangle.width
-                || ((Canvas) current).getHeight() != displayRectangle.height) {
+        if (!(current instanceof Canvas) || current.getWidth() != displayRectangle.width
+                || current.getHeight() != displayRectangle.height) {
             g.translate(displayPaintable.x, displayPaintable.y);
         }
         g.setClip(x, y, width, height);
         Font oldf = g.getFont();
         ma.getDisplayAccess().paint(new J2SEDisplayGraphics((java.awt.Graphics2D) g, getDisplayImage()));
         g.setFont(oldf);
-        if (!(current instanceof Canvas) || ((Canvas) current).getWidth() != displayRectangle.width
-                || ((Canvas) current).getHeight() != displayRectangle.height) {
+        if (!(current instanceof Canvas) || current.getWidth() != displayRectangle.width
+                || current.getHeight() != displayRectangle.height) {
             g.translate(-displayPaintable.x, -displayPaintable.y);
         }
         g.setClip(oldclip);
@@ -337,9 +337,9 @@ public class J2SEDeviceDisplay implements DeviceDisplayImpl {
         int[] rgbData = new int[height * width];
         int[] rgbTransformedData = new int[height * width];
         if (image instanceof J2SEImmutableImage) {
-            ((J2SEImmutableImage) image).getRGB(rgbData, 0, width, x, y, width, height);
+            image.getRGB(rgbData, 0, width, x, y, width, height);
         } else {
-            ((J2SEMutableImage) image).getRGB(rgbData, 0, width, x, y, width, height);
+            image.getRGB(rgbData, 0, width, x, y, width, height);
         }
 
         int colIncr, rowIncr, offset;

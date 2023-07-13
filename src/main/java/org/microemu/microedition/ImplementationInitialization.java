@@ -45,7 +45,7 @@ public interface ImplementationInitialization {
     /**
      * See "--id EmulatorID" command line option
      */
-    public static final String PARAM_EMULATOR_ID = "emulatorID";
+    String PARAM_EMULATOR_ID = "emulatorID";
 
     /**
      *
@@ -53,15 +53,15 @@ public interface ImplementationInitialization {
      *
      * @param parameters Map of configuration options and emulatorID property.
      */
-    public void registerImplementation(Map parameters);
+    void registerImplementation(Map parameters);
 
     /**
      * Called when MIDlet started
      */
-    public void notifyMIDletStart();
+    void notifyMIDletStart();
 
     /**
      * Called when MIDlet exits or destroyed
      */
-    public void notifyMIDletDestroyed();
+    void notifyMIDletDestroyed();
 }

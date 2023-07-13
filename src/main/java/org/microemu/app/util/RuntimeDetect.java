@@ -31,7 +31,7 @@ package org.microemu.app.util;
  */
 public class RuntimeDetect {
 
-    private static boolean java13 = false;
+    private static final boolean java13 = false;
 
     private static boolean java14 = false;
 

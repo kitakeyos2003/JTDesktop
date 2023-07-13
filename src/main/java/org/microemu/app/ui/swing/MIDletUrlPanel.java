@@ -31,7 +31,7 @@ public class MIDletUrlPanel extends SwingDialogPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private JTextField jadUrlField = new JTextField(50);
+    private final JTextField jadUrlField = new JTextField(50);
 
     public MIDletUrlPanel() {
         add(jadUrlField);

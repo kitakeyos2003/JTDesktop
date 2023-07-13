@@ -25,8 +25,8 @@ package org.microemu;
 
 public class MIDletEntry {
 
-    private String name;
-    private Class midletClass;
+    private final String name;
+    private final Class midletClass;
 
     public MIDletEntry(String name, Class midletClass) {
         this.name = name;

@@ -27,9 +27,9 @@ import javax.microedition.lcdui.Image;
 
 public class PositionedImage {
 
-    private Image image;
+    private final Image image;
 
-    private Rectangle rectangle;
+    private final Rectangle rectangle;
 
     public PositionedImage(Image img, Rectangle arectangle) {
         image = img;

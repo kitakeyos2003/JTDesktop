@@ -49,7 +49,7 @@ public class ExtensionsClassLoader extends URLClassLoader {
     private final static boolean debug = false;
 
     /* The context to be used when loading classes and resources */
-    private AccessControlContext acc;
+    private final AccessControlContext acc;
 
     public ExtensionsClassLoader(URL[] urls, ClassLoader parent) {
         super(urls, parent);

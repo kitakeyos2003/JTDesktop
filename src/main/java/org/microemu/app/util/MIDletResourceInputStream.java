@@ -34,7 +34,7 @@ import java.io.InputStream;
  */
 public class MIDletResourceInputStream extends InputStream {
 
-    private InputStream is;
+    private final InputStream is;
 
     public MIDletResourceInputStream(InputStream is) {
         this.is = is;

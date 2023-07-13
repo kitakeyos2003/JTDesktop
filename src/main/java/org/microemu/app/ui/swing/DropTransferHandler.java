@@ -49,15 +49,15 @@ public class DropTransferHandler extends TransferHandler {
 
     private static final long serialVersionUID = 1L;
 
-    private static DataFlavor uriListFlavor = new DataFlavor("text/uri-list;class=java.lang.String", null);
+    private static final DataFlavor uriListFlavor = new DataFlavor("text/uri-list;class=java.lang.String", null);
 
-    private static boolean debugImport = false;
+    private static final boolean debugImport = false;
 
     public int getSourceActions(JComponent c) {
         return TransferHandler.COPY;
     }
 
-    public boolean canImport(JComponent comp, DataFlavor transferFlavors[]) {
+    public boolean canImport(JComponent comp, DataFlavor[] transferFlavors) {
         for (int i = 0; i < transferFlavors.length; i++) {
             Class representationclass = transferFlavors[i].getRepresentationClass();
             // URL from Explorer or Firefox, KDE

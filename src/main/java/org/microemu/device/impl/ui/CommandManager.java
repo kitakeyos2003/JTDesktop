@@ -43,13 +43,13 @@ public class CommandManager {
     private static final Command CMD_BACK = new Command("Back", Command.BACK, 0);
     private static final Command CMD_SELECT = new Command("Select", Command.OK, 0);
 
-    private static CommandManager instance = new CommandManager();
+    private static final CommandManager instance = new CommandManager();
 
     private List menuList = null;
     private Vector menuCommands;
     private Displayable previous;
 
-    private CommandListener menuCommandListener = new CommandListener() {
+    private final CommandListener menuCommandListener = new CommandListener() {
         public void commandAction(Command c, Displayable d) {
             if (menuList == null) {
                 lateInit();

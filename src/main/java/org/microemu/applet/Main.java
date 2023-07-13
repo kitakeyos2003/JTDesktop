@@ -70,25 +70,25 @@ public class Main extends Applet implements MicroEmulator {
 
     private static final long serialVersionUID = 1L;
 
-    private MIDlet midlet = null;
+    private final MIDlet midlet = null;
 
     private RecordStoreManager recordStoreManager;
 
-    private JadProperties manifest = new JadProperties();
+    private final JadProperties manifest = new JadProperties();
 
-    private SwingDeviceComponent devicePanel;
+    private final SwingDeviceComponent devicePanel;
 
     /**
      * Host name accessible by MIDlet
      */
     private String accessibleHost;
 
-    private EmulatorContext emulatorContext = new EmulatorContext() {
-        private InputMethod inputMethod = new J2SEInputMethod();
+    private final EmulatorContext emulatorContext = new EmulatorContext() {
+        private final InputMethod inputMethod = new J2SEInputMethod();
 
-        private DeviceDisplay deviceDisplay = new J2SEDeviceDisplay(this);
+        private final DeviceDisplay deviceDisplay = new J2SEDeviceDisplay(this);
 
-        private FontManager fontManager = new J2SEFontManager();
+        private final FontManager fontManager = new J2SEFontManager();
 
         public DisplayComponent getDisplayComponent() {
             return devicePanel.getDisplayComponent();

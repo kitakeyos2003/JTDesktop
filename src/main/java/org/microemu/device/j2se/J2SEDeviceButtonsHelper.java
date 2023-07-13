@@ -46,7 +46,7 @@ import org.microemu.log.Logger;
  */
 public class J2SEDeviceButtonsHelper {
 
-    private static Map devices = new WeakHashMap();
+    private static final Map devices = new WeakHashMap();
 
     private static class DeviceInformation {
 
@@ -114,11 +114,11 @@ public class J2SEDeviceButtonsHelper {
         boolean hasModeChange = false;
         for (Enumeration en = dev.getButtons().elements(); en.hasMoreElements();) {
             J2SEButton button = (J2SEButton) en.nextElement();
-            int keyCodes[] = button.getKeyboardKeyCodes();
+            int[] keyCodes = button.getKeyboardKeyCodes();
             for (int i = 0; i < keyCodes.length; i++) {
                 inf.keyboardKeyCodes.put(new Integer(keyCodes[i]), button);
             }
-            char charCodes[] = button.getKeyboardCharCodes();
+            char[] charCodes = button.getKeyboardCharCodes();
             for (int i = 0; i < charCodes.length; i++) {
                 inf.keyboardCharCodes.put(new Integer(charCodes[i]), button);
             }

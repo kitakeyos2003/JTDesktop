@@ -50,7 +50,7 @@ public class Alert extends Screen {
             // Displayable (ie immediately after MIDlet start)
             // in that particular case the initial state should 
             // be restored
-            ((Alert) d).currentDisplay.setCurrent(nextDisplayable);
+            d.currentDisplay.setCurrent(nextDisplayable);
         }
     };
 
@@ -72,7 +72,6 @@ public class Alert extends Screen {
 
     public void addCommand(Command cmd) {
         if (cmd == Alert.DISMISS_COMMAND) {
-            return;
         } else {
             super.addCommand(cmd);
             super.removeCommand(Alert.DISMISS_COMMAND);
@@ -81,7 +80,6 @@ public class Alert extends Screen {
 
     public void removeCommand(Command cmd) {
         if (cmd == Alert.DISMISS_COMMAND) {
-            return;
         } else {
             super.removeCommand(cmd);
             if (getCommands().size() == 0) {

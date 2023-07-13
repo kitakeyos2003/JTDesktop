@@ -45,7 +45,7 @@ public class MIDletOutputStreamRedirector extends PrintStream {
 
     public final static PrintStream err = errPrintStream();
 
-    private boolean isErrorStream;
+    private final boolean isErrorStream;
 
     static {
         Logger.addLogOrigin(MIDletOutputStreamRedirector.class);

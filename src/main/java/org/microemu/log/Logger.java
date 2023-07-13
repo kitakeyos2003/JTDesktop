@@ -58,7 +58,7 @@ public class Logger {
 
     private static boolean locationEnabled = true;
 
-    private static List loggerAppenders = new Vector();
+    private static final List loggerAppenders = new Vector();
 
     static {
         fqcnSet.add(FQCN);
@@ -297,7 +297,6 @@ public class Logger {
             LoggerAppender a = (LoggerAppender) iter.next();
             a.append(event);
         }
-        ;
     }
 
     /**

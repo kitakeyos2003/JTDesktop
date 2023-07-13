@@ -29,9 +29,9 @@ import java.util.List;
 
 public class QueueAppender implements LoggerAppender {
 
-    private int buferSize;
+    private final int buferSize;
 
-    private List queue = new LinkedList();
+    private final List queue = new LinkedList();
 
     public QueueAppender(int buferSize) {
         this.buferSize = buferSize;

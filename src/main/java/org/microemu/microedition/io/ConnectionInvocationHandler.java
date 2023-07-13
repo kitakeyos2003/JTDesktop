@@ -45,7 +45,7 @@ import org.microemu.log.Logger;
  */
 public class ConnectionInvocationHandler implements InvocationHandler {
 
-    private Connection originalConnection;
+    private final Connection originalConnection;
 
     /* The context to be used when connecting to network */
     private AccessControlContext acc;

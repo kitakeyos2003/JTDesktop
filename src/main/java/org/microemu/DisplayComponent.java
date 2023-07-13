@@ -28,12 +28,12 @@ import org.microemu.device.MutableImage;
 
 public interface DisplayComponent {
 
-    public void addDisplayRepaintListener(DisplayRepaintListener l);
+    void addDisplayRepaintListener(DisplayRepaintListener l);
 
-    public void removeDisplayRepaintListener(DisplayRepaintListener l);
+    void removeDisplayRepaintListener(DisplayRepaintListener l);
 
-    public MutableImage getDisplayImage();
+    MutableImage getDisplayImage();
 
-    public void repaintRequest(int x, int y, int width, int height);
+    void repaintRequest(int x, int y, int width, int height);
 
 }

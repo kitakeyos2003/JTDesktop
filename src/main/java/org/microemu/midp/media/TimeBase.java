@@ -26,6 +26,6 @@ package org.microemu.midp.media;
 // This is part of MMAPI
 public interface TimeBase {
 
-    public long getTime();
+    long getTime();
 
 }

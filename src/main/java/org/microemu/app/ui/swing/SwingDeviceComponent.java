@@ -87,7 +87,7 @@ public class SwingDeviceComponent extends JPanel implements KeyListener {
 
     Graphics offg;
 
-    private boolean showMouseCoordinates = false;
+    private final boolean showMouseCoordinates = false;
 
     private int pressedX;
 
@@ -146,7 +146,7 @@ public class SwingDeviceComponent extends JPanel implements KeyListener {
 
     }
 
-    private MouseAdapter mouseListener = new MouseAdapter() {
+    private final MouseAdapter mouseListener = new MouseAdapter() {
 
         public void mousePressed(MouseEvent e) {
             requestFocus();
@@ -223,7 +223,7 @@ public class SwingDeviceComponent extends JPanel implements KeyListener {
 
     };
 
-    private MouseMotionListener mouseMotionListener = new MouseMotionListener() {
+    private final MouseMotionListener mouseMotionListener = new MouseMotionListener() {
 
         public void mouseDragged(MouseEvent e) {
             mouseMoved(e);

@@ -43,9 +43,9 @@ public class ResizeDeviceDisplayDialog extends SwingDialogPanel {
 
         private static final long serialVersionUID = 1L;
 
-        private int minValue;
+        private final int minValue;
 
-        private int maxValue;
+        private final int maxValue;
 
         public IntegerField(int cols, int minValue, int maxValue) {
             super(cols);
@@ -80,11 +80,11 @@ public class ResizeDeviceDisplayDialog extends SwingDialogPanel {
                 }
             }
         }
-    };
+    }
 
-    private IntegerField widthField = new IntegerField(5, 1, 9999);
+    private final IntegerField widthField = new IntegerField(5, 1, 9999);
 
-    private IntegerField heightField = new IntegerField(5, 1, 9999);
+    private final IntegerField heightField = new IntegerField(5, 1, 9999);
 
     public ResizeDeviceDisplayDialog() {
         add(new JLabel("Width:"));

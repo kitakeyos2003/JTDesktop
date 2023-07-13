@@ -43,9 +43,9 @@ public class SwingAboutDialog extends SwingDialogPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private JLabel iconLabel;
+    private final JLabel iconLabel;
 
-    private JLabel textLabel;
+    private final JLabel textLabel;
 
     public SwingAboutDialog() {
 

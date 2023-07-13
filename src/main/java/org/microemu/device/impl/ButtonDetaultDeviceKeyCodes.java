@@ -46,9 +46,9 @@ import javax.microedition.lcdui.Canvas;
  */
 public abstract class ButtonDetaultDeviceKeyCodes {
 
-    private static Map codes = new HashMap();
+    private static final Map codes = new HashMap();
 
-    private static Map gameActions = new HashMap();
+    private static final Map gameActions = new HashMap();
 
     public static int getKeyCode(ButtonName name) {
         Integer code = (Integer) codes.get(name);

@@ -31,7 +31,7 @@ import javax.microedition.lcdui.Graphics;
  */
 public class LayerManager {
 
-    private Vector layers;
+    private final Vector layers;
     private int viewX, viewY, viewW, viewH;
 
     public LayerManager() {

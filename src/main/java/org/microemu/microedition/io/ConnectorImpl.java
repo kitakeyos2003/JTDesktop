@@ -30,6 +30,7 @@ import java.security.AccessControlContext;
 import java.security.AccessController;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
+import java.util.Collections;
 import java.util.Vector;
 
 import javax.microedition.io.Connection;
@@ -49,7 +50,7 @@ import com.sun.cdc.io.ConnectionBaseInterface;
 public class ConnectorImpl extends ConnectorAdapter {
 
     /* The context to be used when loading classes */
-    private AccessControlContext acc;
+    private final AccessControlContext acc;
 
     // TODO make this configurable
     public static boolean debugConnectionInvocations = false;
@@ -93,9 +94,7 @@ public class ConnectorImpl extends ConnectorAdapter {
         Class parent = klass;
         while (parent != null) {
             Class[] interfaces = parent.getInterfaces();
-            for (int i = 0; i < interfaces.length; i++) {
-                allInterfaces.add(interfaces[i]);
-            }
+            Collections.addAll(allInterfaces, interfaces);
             parent = parent.getSuperclass();
         }
 

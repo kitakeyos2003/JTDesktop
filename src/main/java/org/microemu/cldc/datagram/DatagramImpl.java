@@ -42,7 +42,7 @@ public class DatagramImpl implements Datagram {
     /**
      * The encapsulated {@link DatagramPacket}
      */
-    private DatagramPacket packet;
+    private final DatagramPacket packet;
 
     /**
      * Our specialised {@link OutputStream} to write to the packet buffer
@@ -65,7 +65,7 @@ public class DatagramImpl implements Datagram {
      */
     class BufferOutputStream extends OutputStream {
 
-        private int originalOffset;
+        private final int originalOffset;
 
         private int offset;
 

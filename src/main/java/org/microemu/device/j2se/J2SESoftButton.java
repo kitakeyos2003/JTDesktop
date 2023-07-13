@@ -45,17 +45,17 @@ public class J2SESoftButton extends J2SEButton implements SoftButton {
 
     public static int RIGHT = 2;
 
-    private int type;
+    private final int type;
 
     private Image normalImage;
 
     private Image pressedImage;
 
-    private Vector commandTypes = new Vector();
+    private final Vector commandTypes = new Vector();
 
     private Command command = null;
 
-    private Rectangle paintable;
+    private final Rectangle paintable;
 
     private int alignment;
 

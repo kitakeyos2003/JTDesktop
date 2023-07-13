@@ -44,7 +44,7 @@ public class TiledLayer extends Layer {
     private int tileHeight, tileWidth, numStaticTiles;
 
     // the matrix for storing the tiles
-    private int[][] tiles;
+    private final int[][] tiles;
 
     // the list of anmated tiles
     // NOTE the first animatedTile (index -1) goes

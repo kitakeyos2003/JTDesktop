@@ -46,7 +46,7 @@ public class MIDletThread extends Thread {
 
     private static boolean terminator = false;
 
-    private static Map midlets = new WeakHashMap();
+    private static final Map midlets = new WeakHashMap();
 
     private static int threadInitNumber;
 
@@ -157,7 +157,7 @@ public class MIDletThread extends Thread {
             } else {
                 Logger.debug("unrecognized Object [" + o.getClass().getName() + "]");
             }
-        };
+        }
         Logger.debug("all " + threads.size() + " thread(s) finished");
         terminator = false;
     }

@@ -31,7 +31,7 @@ import java.util.Hashtable;
 
 public class ResURLStreamHandler extends URLStreamHandler {
 
-    private Hashtable entries;
+    private final Hashtable entries;
 
     public ResURLStreamHandler(Hashtable entries) {
         this.entries = entries;

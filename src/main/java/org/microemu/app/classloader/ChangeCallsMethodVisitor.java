@@ -52,7 +52,7 @@ public class ChangeCallsMethodVisitor extends MethodAdapter implements Opcodes {
 
     private HashMap catchInfo;
 
-    private InstrumentationConfig config;
+    private final InstrumentationConfig config;
 
     private static class CatchInformation {
 
@@ -76,22 +76,19 @@ public class ChangeCallsMethodVisitor extends MethodAdapter implements Opcodes {
     }
 
     public void visitFieldInsn(final int opcode, final String owner, final String name, final String desc) {
-        switch (opcode) {
-            case GETSTATIC:
-                if ((name.equals("out")) && (owner.equals("java/lang/System"))) {
-                    //System.out.println("owner " + owner + " name " + name + " desc " + desc);
-                    // GETSTATIC System.out : PrintStream
-                    mv.visitFieldInsn(opcode, NEW_SYSTEM_OUT_CLASS, name, desc);
-                    return;
-                }
-                if ((name.equals("err")) && (owner.equals("java/lang/System"))) {
-                    //System.out.println("owner " + owner + " name " + name + " desc " + desc);
-                    // GETSTATIC System.out : PrintStream
-                    mv.visitFieldInsn(opcode, NEW_SYSTEM_OUT_CLASS, name, desc);
-                    return;
-                }
-                break;
-
+        if (opcode == GETSTATIC) {
+            if ((name.equals("out")) && (owner.equals("java/lang/System"))) {
+                //System.out.println("owner " + owner + " name " + name + " desc " + desc);
+                // GETSTATIC System.out : PrintStream
+                mv.visitFieldInsn(opcode, NEW_SYSTEM_OUT_CLASS, name, desc);
+                return;
+            }
+            if ((name.equals("err")) && (owner.equals("java/lang/System"))) {
+                //System.out.println("owner " + owner + " name " + name + " desc " + desc);
+                // GETSTATIC System.out : PrintStream
+                mv.visitFieldInsn(opcode, NEW_SYSTEM_OUT_CLASS, name, desc);
+                return;
+            }
         }
         mv.visitFieldInsn(opcode, owner, name, desc);
     }

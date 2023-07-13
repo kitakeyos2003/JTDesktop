@@ -29,7 +29,7 @@ class StringComponent {
 
     private String text;
 
-    private int breaks[] = new int[4];
+    private int[] breaks = new int[4];
 
     private boolean invertPaint = false;
 
@@ -210,7 +210,7 @@ class StringComponent {
             }
         }
         if (numOfBreaks + 1 == breaks.length) {
-            int newbreaks[] = new int[breaks.length + 4];
+            int[] newbreaks = new int[breaks.length + 4];
             System.arraycopy(breaks, 0, newbreaks, 0, numOfBreaks);
             breaks = newbreaks;
         }

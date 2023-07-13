@@ -35,7 +35,7 @@ import org.microemu.RecordStoreManager;
 
 public class MemoryRecordStoreManager implements RecordStoreManager {
 
-    private Hashtable recordStores = new Hashtable();
+    private final Hashtable recordStores = new Hashtable();
 
     private ExtendedRecordListener recordListener = null;
 
@@ -46,7 +46,7 @@ public class MemoryRecordStoreManager implements RecordStoreManager {
         return "Memory record store";
     }
 
-    public void deleteRecordStore(String recordStoreName) throws RecordStoreNotFoundException, RecordStoreException {
+    public void deleteRecordStore(String recordStoreName) throws RecordStoreException {
         RecordStoreImpl recordStoreImpl = (RecordStoreImpl) recordStores.get(recordStoreName);
         if (recordStoreImpl == null) {
             throw new RecordStoreNotFoundException(recordStoreName);

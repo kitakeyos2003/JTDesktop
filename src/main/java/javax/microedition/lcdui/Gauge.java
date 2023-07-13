@@ -103,7 +103,6 @@ public class Gauge extends Item {
                 // this is also the case in the
                 // first call in the constructor!
                 if (this.maxValue == Gauge.INDEFINITE) {
-                    return;
                 } else {
                     this.maxValue = Gauge.INDEFINITE;
                     this.value = Gauge.INCREMENTAL_IDLE;
@@ -221,7 +220,6 @@ public class Gauge extends Item {
         Screen owner = this.getOwner();
 
         if (owner != null && owner instanceof Alert) {
-            return;
         } else {
             super.setPreferredSize(w, h);
         }
@@ -229,7 +227,6 @@ public class Gauge extends Item {
 
     public void setLayout(int layout) {
         if (owner != null && owner instanceof Alert) {
-            return;
         } else {
             super.setLayout(layout);
         }
@@ -237,7 +234,6 @@ public class Gauge extends Item {
 
     public void setLabel(String label) {
         if (owner != null && owner instanceof Alert) {
-            return;
         } else {
             super.setLabel(label);
         }
@@ -245,7 +241,6 @@ public class Gauge extends Item {
 
     public void addCommand(Command cmd) {
         if (owner != null && owner instanceof Alert) {
-            return;
         } else {
             super.addCommand(cmd);
         }
@@ -253,7 +248,6 @@ public class Gauge extends Item {
 
     public void setDefaultCommand(Command cmd) {
         if (owner != null && owner instanceof Alert) {
-            return;
         } else {
             super.setDefaultCommand(cmd);
         }
@@ -261,7 +255,6 @@ public class Gauge extends Item {
 
     public void setItemCommandListener(ItemCommandListener l) {
         if (owner != null && owner instanceof Alert) {
-            return;
         } else {
             super.setItemCommandListener(l);
         }

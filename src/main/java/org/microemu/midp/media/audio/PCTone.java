@@ -63,7 +63,7 @@ public class PCTone {
                     SourceDataLine.class,
                     audioFormat);
 
-    private final byte audioData[] = new byte[sampleRate * MAX_TIME];
+    private final byte[] audioData = new byte[sampleRate * MAX_TIME];
 
     public PCTone() {
     }

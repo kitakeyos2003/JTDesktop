@@ -25,6 +25,6 @@ package org.microemu.device;
 
 public interface DisplayGraphics {
 
-    public MutableImage getImage();
+    MutableImage getImage();
 
 }

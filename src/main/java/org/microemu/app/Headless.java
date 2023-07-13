@@ -42,17 +42,17 @@ import org.microemu.log.Logger;
 
 public class Headless {
 
-    private Common emulator;
+    private final Common emulator;
 
-    private EmulatorContext context = new EmulatorContext() {
+    private final EmulatorContext context = new EmulatorContext() {
 
-        private DisplayComponent displayComponent = new NoUiDisplayComponent();
+        private final DisplayComponent displayComponent = new NoUiDisplayComponent();
 
-        private InputMethod inputMethod = new J2SEInputMethod();
+        private final InputMethod inputMethod = new J2SEInputMethod();
 
-        private DeviceDisplay deviceDisplay = new J2SEDeviceDisplay(this);
+        private final DeviceDisplay deviceDisplay = new J2SEDeviceDisplay(this);
 
-        private FontManager fontManager = new J2SEFontManager();
+        private final FontManager fontManager = new J2SEFontManager();
 
         public DisplayComponent getDisplayComponent() {
             return displayComponent;

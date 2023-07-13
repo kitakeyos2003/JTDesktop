@@ -58,7 +58,7 @@ public class TextField extends Item {
     private int maxSize;
     private int constraints;
 
-    private InputMethodListener inputMethodListener = new InputMethodListener() {
+    private final InputMethodListener inputMethodListener = new InputMethodListener() {
         public void caretPositionChanged(InputMethodEvent event) {
             setCaretPosition(event.getCaret());
             setCaretVisible(true);

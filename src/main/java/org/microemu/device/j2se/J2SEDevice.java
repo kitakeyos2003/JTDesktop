@@ -49,7 +49,7 @@ import org.microemu.device.ui.UIFactory;
 
 public class J2SEDevice extends DeviceImpl {
 
-    private UIFactory ui = new UIFactory() {
+    private final UIFactory ui = new UIFactory() {
 
         public EventDispatcher createEventDispatcher(Display display) {
             EventDispatcher eventDispatcher = new EventDispatcher();

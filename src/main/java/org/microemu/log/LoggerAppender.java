@@ -26,5 +26,5 @@ package org.microemu.log;
 
 public interface LoggerAppender {
 
-    public void append(LoggingEvent event);
+    void append(LoggingEvent event);
 }

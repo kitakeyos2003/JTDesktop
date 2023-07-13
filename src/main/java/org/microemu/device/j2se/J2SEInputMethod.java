@@ -53,9 +53,9 @@ public class J2SEInputMethod extends InputMethodImpl {
 
     private boolean eventAlreadyConsumed;
 
-    private Timer keyReleasedDelayTimer;
+    private final Timer keyReleasedDelayTimer;
 
-    private List repeatModeKeyCodes = new Vector();
+    private final List repeatModeKeyCodes = new Vector();
 
     private class KeyReleasedDelayTask extends TimerTask {
 
@@ -83,7 +83,7 @@ public class J2SEInputMethod extends InputMethodImpl {
                 repeatModeKeyCode = Integer.MIN_VALUE;
             }
         }
-    };
+    }
 
     public J2SEInputMethod() {
         super();
@@ -319,7 +319,6 @@ public class J2SEInputMethod extends InputMethodImpl {
 
     public void buttonTyped(J2SEButton button) {
         if (eventAlreadyConsumed) {
-            return;
         }
     }
 
@@ -380,7 +379,6 @@ public class J2SEInputMethod extends InputMethodImpl {
 
         if (fireInputMethodListener(button, keyChar)) {
             eventAlreadyConsumed = true;
-            return;
         }
     }
 

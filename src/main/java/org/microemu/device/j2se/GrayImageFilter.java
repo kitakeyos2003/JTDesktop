@@ -30,8 +30,12 @@ import org.microemu.device.impl.Color;
 
 public class GrayImageFilter extends RGBImageFilter {
 
-    private double Yr, Yg, Yb;
-    private double Rr, Rg, Rb;
+    private final double Yr;
+    private final double Yg;
+    private final double Yb;
+    private final double Rr;
+    private final double Rg;
+    private final double Rb;
 
     public GrayImageFilter() {
         this(0.2126d, 0.7152d, 0.0722d);

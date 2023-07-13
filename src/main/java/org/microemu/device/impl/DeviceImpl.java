@@ -58,9 +58,9 @@ public abstract class DeviceImpl implements Device {
 
     private Image pressedImage;
 
-    private Vector buttons;
+    private final Vector buttons;
 
-    private Vector softButtons;
+    private final Vector softButtons;
 
     private boolean hasPointerEvents;
 
@@ -69,7 +69,7 @@ public abstract class DeviceImpl implements Device {
     // TODO not implemented yet
     private boolean hasRepeatEvents;
 
-    private Map systemProperties;
+    private final Map systemProperties;
 
     private int skinVersion;
 
@@ -122,7 +122,7 @@ public abstract class DeviceImpl implements Device {
                 throw new IOException(ex.getMessage());
             }
         }
-        device.context = context;
+        DeviceImpl.context = context;
         device.descriptorLocation = descriptorLocation;
         device.loadConfig(classLoader, besourceBase(descriptorLocation), doc);
 
@@ -151,7 +151,7 @@ public abstract class DeviceImpl implements Device {
      * classLoader, String descriptorLocation);
      */
     public void init(EmulatorContext context, String descriptorLocation) {
-        this.context = context;
+        DeviceImpl.context = context;
         if (descriptorLocation.startsWith("/")) {
             this.descriptorLocation = descriptorLocation.substring(1);
         } else {
@@ -333,11 +333,7 @@ public abstract class DeviceImpl implements Device {
         DeviceDisplayImpl deviceDisplay = (DeviceDisplayImpl) getDeviceDisplay();
 
         String resizable = tmp.getStringAttribute("resizable", "false");
-        if (resizable.equalsIgnoreCase("true")) {
-            deviceDisplay.setResizable(true);
-        } else {
-            deviceDisplay.setResizable(false);
-        }
+        deviceDisplay.setResizable(resizable.equalsIgnoreCase("true"));
 
         for (Enumeration e_display = tmp.enumerateChildren(); e_display.hasMoreElements();) {
             XMLElement tmp_display = (XMLElement) e_display.nextElement();
@@ -429,10 +425,7 @@ public abstract class DeviceImpl implements Device {
         FontManagerImpl fontManager = (FontManagerImpl) getFontManager();
 
         String hint = tmp.getStringAttribute("hint");
-        boolean antialiasing = false;
-        if (hint != null && hint.equals("antialiasing")) {
-            antialiasing = true;
-        }
+        boolean antialiasing = hint != null && hint.equals("antialiasing");
         fontManager.setAntialiasing(antialiasing);
 
         for (Enumeration e_fonts = tmp.enumerateChildren(); e_fonts.hasMoreElements();) {
@@ -633,11 +626,7 @@ public abstract class DeviceImpl implements Device {
     }
 
     private boolean parseBoolean(String value) {
-        if (value.toLowerCase().equals(new String("true").toLowerCase())) {
-            return true;
-        } else {
-            return false;
-        }
+        return value.equalsIgnoreCase("true");
     }
 
     /*

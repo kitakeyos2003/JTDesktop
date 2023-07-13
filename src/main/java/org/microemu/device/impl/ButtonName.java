@@ -39,7 +39,7 @@ import java.util.Map;
  */
 public final class ButtonName {
 
-    private static Map altNames = new HashMap();
+    private static final Map altNames = new HashMap();
 
     public static final ButtonName SOFT1 = new ButtonName();
 

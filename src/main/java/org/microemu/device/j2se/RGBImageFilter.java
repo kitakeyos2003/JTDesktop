@@ -28,9 +28,11 @@ import org.microemu.device.impl.Color;
 
 public class RGBImageFilter extends java.awt.image.RGBImageFilter {
 
-    private double Rr, Rg, Rb;
-    private Color backgroundColor;
-    private Color foregroundColor;
+    private final double Rr;
+    private final double Rg;
+    private final double Rb;
+    private final Color backgroundColor;
+    private final Color foregroundColor;
 
     public RGBImageFilter() {
         canFilterIndexColorModel = true;

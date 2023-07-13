@@ -33,7 +33,7 @@ import org.microemu.microedition.io.PushRegistryDelegate;
 
 public class PushRegistry {
 
-    private static PushRegistryDelegate impl;
+    private static final PushRegistryDelegate impl;
 
     static {
         impl = (PushRegistryDelegate) ImplFactory.getImplementation(PushRegistry.class, PushRegistryDelegate.class);

@@ -47,16 +47,16 @@ public class RecordStoreImpl extends RecordStore {
 
     protected Hashtable records = new Hashtable();
 
-    private String recordStoreName;
+    private final String recordStoreName;
     private int version = 0;
     private long lastModified = 0;
     private int nextRecordID = 1;
 
     private transient boolean open;
 
-    private transient RecordStoreManager recordStoreManager;
+    private final transient RecordStoreManager recordStoreManager;
 
-    private transient Vector recordListeners = new Vector();
+    private final transient Vector recordListeners = new Vector();
 
     public RecordStoreImpl(RecordStoreManager recordStoreManager, String recordStoreName) {
         this.recordStoreManager = recordStoreManager;
@@ -114,7 +114,7 @@ public class RecordStoreImpl extends RecordStore {
     }
 
     public void closeRecordStore()
-            throws RecordStoreNotOpenException, RecordStoreException {
+            throws RecordStoreException {
         if (!open) {
             throw new RecordStoreNotOpenException();
         }
@@ -203,7 +203,7 @@ public class RecordStoreImpl extends RecordStore {
     }
 
     public int getNextRecordID()
-            throws RecordStoreNotOpenException, RecordStoreException {
+            throws RecordStoreException {
         if (!open) {
             throw new RecordStoreNotOpenException();
         }
@@ -214,7 +214,7 @@ public class RecordStoreImpl extends RecordStore {
     }
 
     public int addRecord(byte[] data, int offset, int numBytes)
-            throws RecordStoreNotOpenException, RecordStoreException, RecordStoreFullException {
+            throws RecordStoreException {
         if (!open) {
             throw new RecordStoreNotOpenException();
         }
@@ -247,7 +247,7 @@ public class RecordStoreImpl extends RecordStore {
     }
 
     public void deleteRecord(int recordId)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
+            throws RecordStoreException {
         if (!open) {
             throw new RecordStoreNotOpenException();
         }
@@ -266,7 +266,7 @@ public class RecordStoreImpl extends RecordStore {
     }
 
     public int getRecordSize(int recordId)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
+            throws RecordStoreException {
         if (!open) {
             throw new RecordStoreNotOpenException();
         }
@@ -282,7 +282,7 @@ public class RecordStoreImpl extends RecordStore {
     }
 
     public int getRecord(int recordId, byte[] buffer, int offset)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
+            throws RecordStoreException {
         int recordSize;
         synchronized (this) {
             recordSize = getRecordSize(recordId);
@@ -296,7 +296,7 @@ public class RecordStoreImpl extends RecordStore {
     }
 
     public byte[] getRecord(int recordId)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
+            throws RecordStoreException {
         byte[] data;
 
         synchronized (this) {
@@ -308,7 +308,7 @@ public class RecordStoreImpl extends RecordStore {
     }
 
     public void setRecord(int recordId, byte[] newData, int offset, int numBytes)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException, RecordStoreFullException {
+            throws RecordStoreException {
         if (!open) {
             throw new RecordStoreNotOpenException();
         }

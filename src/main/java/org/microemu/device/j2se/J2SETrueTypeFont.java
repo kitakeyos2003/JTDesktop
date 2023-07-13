@@ -39,11 +39,11 @@ public class J2SETrueTypeFont implements J2SEFont {
     private final static Graphics2D graphics = (Graphics2D) new BufferedImage(1, 1,
             BufferedImage.TYPE_INT_ARGB).getGraphics();
 
-    private URL url;
+    private final URL url;
 
-    private String style;
+    private final String style;
 
-    private int size;
+    private final int size;
 
     private boolean antialiasing;
 

@@ -38,7 +38,7 @@ public class DisplayableImplUI implements DisplayableUI {
 
     protected Displayable displayable;
 
-    private Vector commands = new Vector();
+    private final Vector commands = new Vector();
 
     protected DisplayableImplUI(Displayable displayable) {
         this.displayable = displayable;
@@ -47,7 +47,7 @@ public class DisplayableImplUI implements DisplayableUI {
     public void addCommandUI(CommandUI cmd) {
         // Check that its not the same command
         for (int i = 0; i < commands.size(); i++) {
-            if (cmd == (CommandUI) commands.elementAt(i)) {
+            if (cmd == commands.elementAt(i)) {
                 // Its the same just return
                 return;
             }
@@ -62,7 +62,7 @@ public class DisplayableImplUI implements DisplayableUI {
                 break;
             }
         }
-        if (inserted == false) {
+        if (!inserted) {
             // Not inserted just place it at the end
             commands.addElement(cmd);
         }

@@ -49,15 +49,15 @@ public class SwingErrorMessageDialogPanel extends SwingDialogPanel implements Me
 
     private static final long serialVersionUID = 1L;
 
-    private Frame parent;
+    private final Frame parent;
 
-    private JLabel iconLabel;
+    private final JLabel iconLabel;
 
-    private JLabel textLabel;
+    private final JLabel textLabel;
 
-    private JTextArea stackTraceArea;
+    private final JTextArea stackTraceArea;
 
-    private JScrollPane stackTracePane;
+    private final JScrollPane stackTracePane;
 
     /**
      * @param parent

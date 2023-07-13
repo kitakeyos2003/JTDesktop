@@ -36,7 +36,7 @@ public class RecordStore {
 //	    
 //	}
     public static void deleteRecordStore(String recordStoreName)
-            throws RecordStoreException, RecordStoreNotFoundException {
+            throws RecordStoreException {
         MIDletBridge.getRecordStoreManager().deleteRecordStore(recordStoreName);
     }
 
@@ -45,24 +45,24 @@ public class RecordStore {
     }
 
     public static RecordStore openRecordStore(String recordStoreName, boolean createIfNecessary)
-            throws RecordStoreException, RecordStoreFullException, RecordStoreNotFoundException {
+            throws RecordStoreException {
         return MIDletBridge.getRecordStoreManager().openRecordStore(recordStoreName, createIfNecessary);
     }
 
     public static RecordStore openRecordStore(String recordStoreName, boolean createIfNecessary, int authmode, boolean writable)
-            throws RecordStoreException, RecordStoreFullException, RecordStoreNotFoundException {
+            throws RecordStoreException {
         // TODO Not yet implemented
         return openRecordStore(recordStoreName, createIfNecessary);
     }
 
     public static RecordStore openRecordStore(String recordStoreName, String vendorName, String suiteName)
-            throws RecordStoreException, RecordStoreNotFoundException {
+            throws RecordStoreException {
         // TODO Not yet implemented
         return openRecordStore(recordStoreName, false);
     }
 
     public void closeRecordStore()
-            throws RecordStoreNotOpenException, RecordStoreException {
+            throws RecordStoreException {
         // Must be overriden
     }
 
@@ -117,40 +117,40 @@ public class RecordStore {
     }
 
     public int getNextRecordID()
-            throws RecordStoreNotOpenException, RecordStoreException {
+            throws RecordStoreException {
         // Must be overriden
 
         return -1;
     }
 
     public int addRecord(byte[] data, int offset, int numBytes)
-            throws RecordStoreNotOpenException, RecordStoreException, RecordStoreFullException {
+            throws RecordStoreException {
         // Must be overriden
 
         return -1;
     }
 
     public void deleteRecord(int recordId)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
+            throws RecordStoreException {
         // Must be overriden
     }
 
     public int getRecordSize(int recordId)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
+            throws RecordStoreException {
         // Must be overriden
 
         return -1;
     }
 
     public int getRecord(int recordId, byte[] buffer, int offset)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
+            throws RecordStoreException {
         // Must be overriden
 
         return -1;
     }
 
     public byte[] getRecord(int recordId)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
+            throws RecordStoreException {
         // Must be overriden
 
         return null;
@@ -162,7 +162,7 @@ public class RecordStore {
     }
 
     public void setRecord(int recordId, byte[] newData, int offset, int numBytes)
-            throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException, RecordStoreFullException {
+            throws RecordStoreException {
         // Must be overriden
     }
 

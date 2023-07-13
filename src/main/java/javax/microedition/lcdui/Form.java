@@ -30,7 +30,7 @@ import org.microemu.device.ui.FormUI;
 //TODO implement pointer events
 public class Form extends Screen {
 
-    Item items[] = new Item[4];
+    Item[] items = new Item[4];
     int numOfItems = 0;
     int focusItemIndex;
     ItemStateListener itemStateListener = null;
@@ -64,7 +64,7 @@ public class Form extends Screen {
         }
 
         if (numOfItems + 1 >= items.length) {
-            Item newitems[] = new Item[numOfItems + 4];
+            Item[] newitems = new Item[numOfItems + 4];
             System.arraycopy(items, 0, newitems, 0, numOfItems);
             items = newitems;
         }
@@ -148,7 +148,7 @@ public class Form extends Screen {
         }
 
         if (numOfItems + 1 == items.length) {
-            Item newitems[] = new Item[numOfItems + 4];
+            Item[] newitems = new Item[numOfItems + 4];
             System.arraycopy(items, 0, newitems, 0, numOfItems);
             items = newitems;
         }

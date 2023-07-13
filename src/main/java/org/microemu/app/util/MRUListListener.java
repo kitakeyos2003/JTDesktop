@@ -30,5 +30,5 @@ package org.microemu.app.util;
  */
 public interface MRUListListener {
 
-    public void listItemChanged(Object item);
+    void listItemChanged(Object item);
 }

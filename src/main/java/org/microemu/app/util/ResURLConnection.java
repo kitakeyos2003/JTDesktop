@@ -34,7 +34,7 @@ public class ResURLConnection extends URLConnection {
 
     private static final String PREFIX = "res:";
 
-    private Hashtable entries;
+    private final Hashtable entries;
 
     protected ResURLConnection(URL url, Hashtable entries) {
         super(url);

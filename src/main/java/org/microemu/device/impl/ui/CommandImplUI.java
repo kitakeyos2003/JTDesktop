@@ -7,7 +7,7 @@ import org.microemu.device.ui.CommandUI;
 
 public class CommandImplUI implements CommandUI {
 
-    private Command command;
+    private final Command command;
 
     public CommandImplUI(Command command) {
         this.command = command;

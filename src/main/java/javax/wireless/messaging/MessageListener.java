@@ -7,5 +7,5 @@ package javax.wireless.messaging;
 
 public interface MessageListener {
 
-    public void notifyIncomingMessage(MessageConnection var1);
+    void notifyIncomingMessage(MessageConnection var1);
 }

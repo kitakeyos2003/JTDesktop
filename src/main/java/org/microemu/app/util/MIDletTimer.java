@@ -46,9 +46,9 @@ import org.microemu.log.Logger;
  */
 public class MIDletTimer extends Timer implements Runnable {
 
-    private static Map midlets = new WeakHashMap();
+    private static final Map midlets = new WeakHashMap();
 
-    private String name;
+    private final String name;
 
     private MIDletContext midletContext;
 
@@ -57,7 +57,7 @@ public class MIDletTimer extends Timer implements Runnable {
 
     private boolean cancelled;
 
-    private MIDletThread thread;
+    private final MIDletThread thread;
 
     public MIDletTimer() {
         super();

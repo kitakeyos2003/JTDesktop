@@ -29,9 +29,9 @@ import org.microemu.log.Logger;
 
 public class SecurityInfoImpl implements SecurityInfo {
 
-    private String cipherSuite;
-    private String protocolName;
-    private Certificate certificate;
+    private final String cipherSuite;
+    private final String protocolName;
+    private final Certificate certificate;
 
     public SecurityInfoImpl(String cipherSuite, String protocolName, Certificate certificate) {
         this.cipherSuite = cipherSuite;

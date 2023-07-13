@@ -58,11 +58,7 @@ public abstract class Screen extends Displayable {
         int contentHeight = 0;
         int translatedY;
 
-        if (viewPortY == 0) {
-            currentDisplay.setScrollUp(false);
-        } else {
-            currentDisplay.setScrollUp(true);
-        }
+        currentDisplay.setScrollUp(viewPortY != 0);
 
         g.setGrayScale(255);
         g.fillRect(0, 0, getWidth(), getHeight());
@@ -92,11 +88,7 @@ public abstract class Screen extends Displayable {
         contentHeight += paintContent(g);
         g.translate(0, viewPortY);
 
-        if (contentHeight - viewPortY > getHeight()) {
-            currentDisplay.setScrollDown(true);
-        } else {
-            currentDisplay.setScrollDown(false);
-        }
+        currentDisplay.setScrollDown(contentHeight - viewPortY > getHeight());
         g.translate(0, -translatedY);
     }
 

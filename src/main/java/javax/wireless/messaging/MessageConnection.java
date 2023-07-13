@@ -10,19 +10,19 @@ import javax.microedition.io.Connection;
 public interface MessageConnection
         extends Connection {
 
-    public static final String BINARY_MESSAGE = "binary";
-    public static final String MULTIPART_MESSAGE = "multipart";
-    public static final String TEXT_MESSAGE = "text";
+    String BINARY_MESSAGE = "binary";
+    String MULTIPART_MESSAGE = "multipart";
+    String TEXT_MESSAGE = "text";
 
-    public Message newMessage(String var1);
+    Message newMessage(String var1);
 
-    public Message newMessage(String var1, String var2);
+    Message newMessage(String var1, String var2);
 
-    public int numberOfSegments(Message var1);
+    int numberOfSegments(Message var1);
 
-    public Message receive();
+    Message receive();
 
-    public void send(Message var1);
+    void send(Message var1);
 
-    public void setMessageListener(MessageListener var1);
+    void setMessageListener(MessageListener var1);
 }

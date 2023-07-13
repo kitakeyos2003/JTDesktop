@@ -28,13 +28,13 @@ public interface RecordEnumeration {
     int numRecords();
 
     byte[] nextRecord()
-            throws InvalidRecordIDException, RecordStoreNotOpenException, RecordStoreException;
+            throws RecordStoreException;
 
     int nextRecordId()
             throws InvalidRecordIDException;
 
     byte[] previousRecord()
-            throws InvalidRecordIDException, RecordStoreNotOpenException, RecordStoreException;
+            throws RecordStoreException;
 
     int previousRecordId()
             throws InvalidRecordIDException;

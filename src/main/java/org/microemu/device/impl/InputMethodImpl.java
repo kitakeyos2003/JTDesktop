@@ -41,7 +41,7 @@ public abstract class InputMethodImpl extends InputMethod implements Runnable {
 
     private boolean cancel;
 
-    private Thread t;
+    private final Thread t;
 
     public InputMethodImpl() {
         this.lastButton = null;

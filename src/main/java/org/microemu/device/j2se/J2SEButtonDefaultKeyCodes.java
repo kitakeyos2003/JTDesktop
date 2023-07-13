@@ -44,9 +44,9 @@ import org.microemu.device.impl.ButtonName;
  */
 public class J2SEButtonDefaultKeyCodes {
 
-    private static Map codes = new HashMap();
+    private static final Map codes = new HashMap();
 
-    private static Map backwardCompatibleNames = new HashMap();
+    private static final Map backwardCompatibleNames = new HashMap();
 
     private static class KeyInformation {
 

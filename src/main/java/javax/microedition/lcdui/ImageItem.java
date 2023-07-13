@@ -37,7 +37,7 @@ public class ImageItem extends Item {
 
     String altText;
 
-    private int appearanceMode;
+    private final int appearanceMode;
 
     public ImageItem(String label, Image img, int layout, String altText) {
         this(label, img, layout, altText, ImageItem.PLAIN);

@@ -31,10 +31,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
@@ -121,7 +118,7 @@ public class AppletProducer {
             byte[] inputBuffer = new byte[1024];
             JarEntry jarEntry;
             while ((jarEntry = jis.getNextJarEntry()) != null) {
-                if (jarEntry.isDirectory() == false) {
+                if (!jarEntry.isDirectory()) {
                     String name = jarEntry.getName();
                     int size = 0;
                     int read;
@@ -170,8 +167,8 @@ public class AppletProducer {
         }
     }
 
-    public static void main(String args[]) {
-        String midletClass = null;;
+    public static void main(String[] args) {
+        String midletClass = null;
         File appletInputFile = null;
         File deviceInputFile = null;
         File midletInputFile = null;
@@ -181,9 +178,7 @@ public class AppletProducer {
         File midletOutputFile = null;
 
         List params = new ArrayList();
-        for (int i = 0; i < args.length; i++) {
-            params.add(args[i]);
-        }
+        Collections.addAll(params, args);
 
         Iterator argsIterator = params.iterator();
         while (argsIterator.hasNext()) {
@@ -246,13 +241,13 @@ public class AppletProducer {
             }
             if (descriptorLocation != null) {
                 EmulatorContext context = new EmulatorContext() {
-                    private DisplayComponent displayComponent = new NoUiDisplayComponent();
+                    private final DisplayComponent displayComponent = new NoUiDisplayComponent();
 
-                    private InputMethod inputMethod = new J2SEInputMethod();
+                    private final InputMethod inputMethod = new J2SEInputMethod();
 
-                    private DeviceDisplay deviceDisplay = new J2SEDeviceDisplay(this);
+                    private final DeviceDisplay deviceDisplay = new J2SEDeviceDisplay(this);
 
-                    private FontManager fontManager = new J2SEFontManager();
+                    private final FontManager fontManager = new J2SEFontManager();
 
                     public DisplayComponent getDisplayComponent() {
                         return displayComponent;

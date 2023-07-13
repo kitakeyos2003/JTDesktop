@@ -33,15 +33,15 @@ import org.microemu.device.impl.FontManagerImpl;
 
 public class J2SEFontManager implements FontManagerImpl {
 
-    private static String FACE_SYSTEM_NAME = "SansSerif";
-    private static String FACE_MONOSPACE_NAME = "Monospaced";
-    private static String FACE_PROPORTIONAL_NAME = "SansSerif";
+    private static final String FACE_SYSTEM_NAME = "SansSerif";
+    private static final String FACE_MONOSPACE_NAME = "Monospaced";
+    private static final String FACE_PROPORTIONAL_NAME = "SansSerif";
 
-    private static int SIZE_SMALL = 9;
-    private static int SIZE_MEDIUM = 11;
-    private static int SIZE_LARGE = 13;
+    private static final int SIZE_SMALL = 9;
+    private static final int SIZE_MEDIUM = 11;
+    private static final int SIZE_LARGE = 13;
 
-    private Hashtable fonts = new Hashtable();
+    private final Hashtable fonts = new Hashtable();
 
     private boolean antialiasing;
 

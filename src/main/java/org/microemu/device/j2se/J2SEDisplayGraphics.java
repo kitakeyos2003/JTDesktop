@@ -45,12 +45,12 @@ import org.microemu.device.MutableImage;
 public class J2SEDisplayGraphics extends javax.microedition.lcdui.Graphics implements DisplayGraphics {
 
     // TODO use IntHashMap
-    private static HashMap colorCache = new HashMap();
+    private static final HashMap colorCache = new HashMap();
 
-    private java.awt.Graphics2D g;
+    private final java.awt.Graphics2D g;
 
     // Andres Navarro
-    private MutableImage image;
+    private final MutableImage image;
 
     private int color = 0;
 
@@ -282,7 +282,7 @@ public class J2SEDisplayGraphics extends javax.microedition.lcdui.Graphics imple
                 break;
             }
             case Sprite.TRANS_ROT90: {
-                t.translate((double) height, 0);
+                t.translate(height, 0);
                 t.rotate(Math.PI / 2);
                 dW = height;
                 dH = width;
@@ -306,9 +306,9 @@ public class J2SEDisplayGraphics extends javax.microedition.lcdui.Graphics imple
                 break;
             }
             case Sprite.TRANS_MIRROR_ROT90: {
-                t.translate((double) height, 0);
+                t.translate(height, 0);
                 t.rotate(Math.PI / 2);
-                t.translate((double) width, 0);
+                t.translate(width, 0);
                 t.scale(-1, 1);
                 dW = height;
                 dH = width;
@@ -451,10 +451,7 @@ public class J2SEDisplayGraphics extends javax.microedition.lcdui.Graphics imple
         }
         // process anchor and correct x and y _dest
         // vertical
-        boolean badAnchor = false;
-        if ((anchor & 0x7f) != anchor || (anchor & BASELINE) != 0) {
-            badAnchor = true;
-        }
+        boolean badAnchor = (anchor & 0x7f) != anchor || (anchor & BASELINE) != 0;
 
         if ((anchor & TOP) != 0) {
             if ((anchor & (VCENTER | BOTTOM)) != 0) {

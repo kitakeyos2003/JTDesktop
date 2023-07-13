@@ -32,7 +32,7 @@ import javax.microedition.io.StreamConnection;
 public class ServerSocketConnection implements
         javax.microedition.io.ServerSocketConnection {
 
-    private ServerSocket serverSocket;
+    private final ServerSocket serverSocket;
 
     public ServerSocketConnection(int port) throws IOException {
         serverSocket = new ServerSocket(port);

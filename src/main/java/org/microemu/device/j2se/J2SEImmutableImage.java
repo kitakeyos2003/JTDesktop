@@ -34,7 +34,7 @@ import org.microemu.log.Logger;
 
 public class J2SEImmutableImage extends javax.microedition.lcdui.Image {
 
-    private Image img;
+    private final Image img;
 
     private int width;
 

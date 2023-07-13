@@ -74,7 +74,7 @@ public class JMRUMenu extends JMenu implements MRUListListener {
 
             private static final long serialVersionUID = 1L;
 
-            Object sourceMRU = item;
+            final Object sourceMRU = item;
 
             public void actionPerformed(ActionEvent e) {
                 JMRUMenu.this.fireActionPerformed(new MRUActionEvent(sourceMRU, e));

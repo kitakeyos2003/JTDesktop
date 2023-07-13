@@ -25,8 +25,8 @@ package javax.microedition.media;
 
 public interface Controllable {
 
-    public Control[] getControls();
+    Control[] getControls();
 
-    public Control getControl(String controlType);
+    Control getControl(String controlType);
 
 }

@@ -35,6 +35,7 @@ import java.lang.reflect.Modifier;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -101,7 +102,7 @@ public class Common implements MicroEmulator, CommonInterface {
 
     private static StatusBarListener statusBarListener = null;
 
-    private JadProperties manifest = new JadProperties();
+    private final JadProperties manifest = new JadProperties();
 
     private RecordStoreManager recordStoreManager;
 
@@ -109,7 +110,7 @@ public class Common implements MicroEmulator, CommonInterface {
 
     private ExtensionsClassLoader extensionsClassLoader;
 
-    private Vector extensions = new Vector();
+    private final Vector extensions = new Vector();
 
     private MIDletClassLoaderConfig mIDletClassLoaderConfig;
 
@@ -123,7 +124,7 @@ public class Common implements MicroEmulator, CommonInterface {
 
     private String jadURL = null;
 
-    private Object destroyNotify = new Object();
+    private final Object destroyNotify = new Object();
 
     private boolean exitOnMIDletDestroy = false;
 
@@ -225,8 +226,8 @@ public class Common implements MicroEmulator, CommonInterface {
             return false;
         }
 
-        return (nameString.substring(end + 1, nameString.length()).toLowerCase(Locale.ENGLISH).equals("jad") || nameString.substring(end + 1,
-                nameString.length()).toLowerCase(Locale.ENGLISH).equals("jar"));
+        return (nameString.substring(end + 1).toLowerCase(Locale.ENGLISH).equals("jad") || nameString.substring(end + 1
+        ).toLowerCase(Locale.ENGLISH).equals("jar"));
     }
 
     /**
@@ -334,7 +335,7 @@ public class Common implements MicroEmulator, CommonInterface {
             URL url = new URL(jad.getJarURL());
             URLConnection conn = url.openConnection();
             if (url.getUserInfo() != null) {
-                String userInfo = new String(Base64Coder.encode(url.getUserInfo().getBytes("UTF-8")));
+                String userInfo = new String(Base64Coder.encode(url.getUserInfo().getBytes(StandardCharsets.UTF_8)));
                 conn.setRequestProperty("Authorization", "Basic " + userInfo);
             }
             is = conn.getInputStream();
@@ -1001,7 +1002,7 @@ public class Common implements MicroEmulator, CommonInterface {
             properties.read(url.openStream());
         } else {
             URLConnection cn = url.openConnection();
-            String userInfo = new String(Base64Coder.encode(url.getUserInfo().getBytes("UTF-8")));
+            String userInfo = new String(Base64Coder.encode(url.getUserInfo().getBytes(StandardCharsets.UTF_8)));
             cn.setRequestProperty("Authorization", "Basic " + userInfo);
             properties.read(cn.getInputStream());
         }
@@ -1012,7 +1013,7 @@ public class Common implements MicroEmulator, CommonInterface {
     public void initMIDlet(boolean startMidlet) {
         Class midletClass = null;
 
-        if (midletClassOrUrl != null && Common.isMIDletUrlExtension(midletClassOrUrl)) {
+        if (Common.isMIDletUrlExtension(midletClassOrUrl)) {
             try {
                 File file = new File(midletClassOrUrl);
                 String url = file.exists() ? IOUtils.getCanonicalFileURL(file) : midletClassOrUrl;

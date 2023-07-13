@@ -45,11 +45,11 @@ public class MRUList implements XMLItem {
 
     protected int maxCapacity = MAXCAPACITY_DEFAULT;
 
-    private Stack items = new Stack/* <XMLItem> */();
+    private final Stack items = new Stack/* <XMLItem> */();
 
-    private String itemsName;
+    private final String itemsName;
 
-    private Class classXMLItem;
+    private final Class classXMLItem;
 
     private MRUListListener listener;
 

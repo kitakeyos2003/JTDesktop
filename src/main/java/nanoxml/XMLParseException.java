@@ -47,7 +47,7 @@ public class XMLParseException
      * <ul><li><code>lineNr &gt 0 || lineNr == NO_LINE</code>
      * </ul></dd></dl>
      */
-    private int lineNr;
+    private final int lineNr;
 
     /**
      * Creates an exception.

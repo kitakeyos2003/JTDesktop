@@ -6,11 +6,12 @@ import javax.microedition.midlet.MIDlet;
 
 public class Application {
 
-    private String name;
-    private Class<? extends MIDlet> midlet;
-    private short width, height;
-    private String args[];
-    private String icon;
+    private final String name;
+    private final Class<? extends MIDlet> midlet;
+    private final short width;
+    private final short height;
+    private final String[] args;
+    private final String icon;
 
     public Application(String name, Class<? extends MIDlet> midlet, short width, short height, String[] args, String icon) {
         this.name = name;

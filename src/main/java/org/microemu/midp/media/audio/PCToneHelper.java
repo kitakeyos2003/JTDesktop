@@ -29,7 +29,7 @@ import javax.sound.sampled.SourceDataLine;
 
 class PCToneHelper {
 
-    protected byte playBuffer[];
+    protected byte[] playBuffer;
     private SourceDataLine sourceDataLine;
     private AudioInputStream audioInputStream;
     private AudioFormat audioFormat;

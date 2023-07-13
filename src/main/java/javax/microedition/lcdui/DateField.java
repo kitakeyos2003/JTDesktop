@@ -189,7 +189,7 @@ public class DateField extends Item {
         int month = cal.get(Calendar.MONTH) + 1;
         int year = cal.get(Calendar.YEAR);
 
-        return Integer.toString(day) + "-" + month + "-" + year;
+        return day + "-" + month + "-" + year;
     }
 
     private String formatTime() {
@@ -202,7 +202,7 @@ public class DateField extends Item {
         int hours = cal.get(Calendar.HOUR_OF_DAY);
         int minutes = cal.get(Calendar.MINUTE);
 
-        return Integer.toString(hours) + ":" + (minutes < 10 ? "0" : "") + minutes;
+        return hours + ":" + (minutes < 10 ? "0" : "") + minutes;
     }
 
     void updateDateTimeString() {

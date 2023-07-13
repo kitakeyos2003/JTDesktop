@@ -66,7 +66,7 @@ public class SwingDisplayComponent extends JComponent implements DisplayComponen
 
     private static final long serialVersionUID = 1L;
 
-    private SwingDeviceComponent deviceComponent;
+    private final SwingDeviceComponent deviceComponent;
 
     private J2SEMutableImage displayImage = null;
 
@@ -80,7 +80,7 @@ public class SwingDisplayComponent extends JComponent implements DisplayComponen
 
     private Point pressedPoint = new Point();
 
-    private MouseAdapter mouseListener = new MouseAdapter() {
+    private final MouseAdapter mouseListener = new MouseAdapter() {
 
         public void mousePressed(MouseEvent e) {
             deviceComponent.requestFocus();
@@ -180,7 +180,7 @@ public class SwingDisplayComponent extends JComponent implements DisplayComponen
 
     };
 
-    private MouseMotionListener mouseMotionListener = new MouseMotionListener() {
+    private final MouseMotionListener mouseMotionListener = new MouseMotionListener() {
 
         public void mouseDragged(MouseEvent e) {
             if (showMouseCoordinates) {
@@ -230,7 +230,7 @@ public class SwingDisplayComponent extends JComponent implements DisplayComponen
 
     };
 
-    private MouseWheelListener mouseWheelListener = new MouseWheelListener() {
+    private final MouseWheelListener mouseWheelListener = new MouseWheelListener() {
 
         public void mouseWheelMoved(MouseWheelEvent ev) {
             if (ev.getWheelRotation() > 0) {

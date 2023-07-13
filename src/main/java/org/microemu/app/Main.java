@@ -70,17 +70,17 @@ public class Main extends JFrame {
 
     private SwingDeviceComponent devicePanel;
 
-    private QueueAppender logQueueAppender;
+    private final QueueAppender logQueueAppender;
 
     private AnimatedGifEncoder encoder;
 
     protected EmulatorContext emulatorContext = new EmulatorContext() {
 
-        private InputMethod inputMethod = new J2SEInputMethod();
+        private final InputMethod inputMethod = new J2SEInputMethod();
 
-        private DeviceDisplay deviceDisplay = new J2SEDeviceDisplay(this);
+        private final DeviceDisplay deviceDisplay = new J2SEDeviceDisplay(this);
 
-        private FontManager fontManager = new J2SEFontManager();
+        private final FontManager fontManager = new J2SEFontManager();
 
         public DisplayComponent getDisplayComponent() {
             return devicePanel.getDisplayComponent();
@@ -113,7 +113,7 @@ public class Main extends JFrame {
         }
     };
 
-    private ActionListener menuExitListener = new ActionListener() {
+    private final ActionListener menuExitListener = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             synchronized (Main.this) {
                 if (encoder != null) {
@@ -128,7 +128,7 @@ public class Main extends JFrame {
         }
     };
 
-    private WindowAdapter windowListener = new WindowAdapter() {
+    private final WindowAdapter windowListener = new WindowAdapter() {
         public void windowClosing(WindowEvent ev) {
             menuExitListener.actionPerformed(null);
         }

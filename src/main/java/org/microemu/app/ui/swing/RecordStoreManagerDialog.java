@@ -61,23 +61,23 @@ public class RecordStoreManagerDialog extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    private Common common;
+    private final Common common;
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss.S");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss.S");
 
-    private JLabel recordStoreTypeLabel = new JLabel();
+    private final JLabel recordStoreTypeLabel = new JLabel();
 
-    private JLabel suiteNameLabel = new JLabel();
+    private final JLabel suiteNameLabel = new JLabel();
 
     private RecordStoreChangePanel recordStoreChangePanel = null;
 
-    private DefaultTableModel modelTable = new DefaultTableModel();
+    private final DefaultTableModel modelTable = new DefaultTableModel();
 
-    private JTable logTable = new JTable(modelTable);
+    private final JTable logTable = new JTable(modelTable);
 
-    private JScrollPane logScrollPane = new JScrollPane(logTable);
+    private final JScrollPane logScrollPane = new JScrollPane(logTable);
 
-    private ActionListener recordStoreTypeChangeListener = new ActionListener() {
+    private final ActionListener recordStoreTypeChangeListener = new ActionListener() {
 
         public void actionPerformed(ActionEvent e) {
             if (recordStoreChangePanel == null) {
@@ -186,7 +186,7 @@ public class RecordStoreManagerDialog extends JFrame {
         modelTable.addColumn("Details");
         logTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 
-            private Color SUPER_LIGHT_GRAY = new Color(240, 240, 240);
+            private final Color SUPER_LIGHT_GRAY = new Color(240, 240, 240);
 
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                     boolean hasFocus, int row, int column) {

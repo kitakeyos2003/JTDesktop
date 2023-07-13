@@ -45,7 +45,7 @@ public abstract class GameCanvas extends Canvas {
 
     // true if this GameCanvas doesn't generate
     // key events for the game keys
-    private boolean suppressKeyEvents;
+    private final boolean suppressKeyEvents;
     // the latched state of the keys
     // reseted on call to getKeyStates
     private int latchedKeyState;
