@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0">
+    <!-- @version $Revision: 2281 $ ($Author: skarzhevskyy $) $Date: 2010-01-14 10:50:10 -0500 (Thu, 14 Jan 2010) $ -->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>JTDesktop</groupId>
+    <artifactId>me.kitakeyos.jtd</artifactId>
+    <version>0.0.1</version>
+    <name>J2meToDesktop</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>sun</groupId>
+            <artifactId>applet-jsobject</artifactId>
+            <version>1.4</version>
+            <optional>true</optional>
+            <!--scope>provided</scope-->
+            <scope>system</scope>
+            <!-- There are no plugin on Linux 64-bit Java; Copy it from 32-bit java installation -->
+            <systemPath>${java.home}/lib/plugin.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.jour</groupId>
+            <artifactId>jour-instrument</artifactId>
+            <version>2.0.3</version>
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+</project>
