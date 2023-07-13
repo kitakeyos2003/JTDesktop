@@ -25,10 +25,11 @@ To use the J2ME to Java Swing Project Converter, you need to include the library
 
 Using the J2ME to Java Swing Project Converter is straightforward. You need to follow these steps:
 
-1. Import the necessary classes from the library into your Java code.
-2. Create an instance of the `Application` class.
-3. Use the `start` method of the converter instance, providing the path to your J2ME project as a parameter.
-4. The converter will analyze the J2ME project and generate the corresponding Java Swing code.
+1. Create a new Java Maven project and add this JTD library.
+2. Create a class `Main` with the method `main`.
+   - Create an instance of class `Application` with parameters `name`, `midlet`, `width`, `height`, `icon`.
+   - Use the `start` method to run the application.
+4. Build and run the program.
 
 Make sure that your J2ME project follows the standard structure and conventions to ensure a successful conversion process.
 
