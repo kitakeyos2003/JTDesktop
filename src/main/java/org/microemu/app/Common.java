@@ -634,28 +634,30 @@ public class Common implements MicroEmulator, CommonInterface {
         }
     }
 
-    protected void startApp(String name, Class<? extends MIDlet> midlet) {
+    protected void startApp(String name, Class<? extends MIDlet> midlet, String manifestPath) {
         MIDletBridge.clear();
         setResponseInterface(false);
         try {
             manifest.clear();
-            InputStream is = null;
-            try {
-                ClassLoader classLoader = getClass().getClassLoader();
-                URL resourceUrl = classLoader.getResource("game.ini");
+            if (manifestPath != null) {
+                InputStream is = null;
+                try {
+                    ClassLoader classLoader = getClass().getClassLoader();
+                    URL resourceUrl = classLoader.getResource(manifestPath);
 
-                is = resourceUrl.openStream();
-                manifest.read(is);
-                Attributes attributes = manifest.getMainAttributes();
-                for (Iterator it = attributes.keySet().iterator(); it.hasNext();) {
-                    Attributes.Name key = (Attributes.Name) it.next();
-                    String value = (String) attributes.get(key);
-                    jad.getMainAttributes().put(key, value);
+                    is = resourceUrl.openStream();
+                    manifest.read(is);
+                    Attributes attributes = manifest.getMainAttributes();
+                    for (Iterator it = attributes.keySet().iterator(); it.hasNext();) {
+                        Attributes.Name key = (Attributes.Name) it.next();
+                        String value = (String) attributes.get(key);
+                        jad.getMainAttributes().put(key, value);
+                    }
+                } catch (IOException e) {
+                    Message.error("Unable to read " + manifestPath, e);
+                } finally {
+                    IOUtils.closeQuietly(is);
                 }
-            } catch (IOException e) {
-                Message.error("Unable to read game.ini", e);
-            } finally {
-                IOUtils.closeQuietly(is);
             }
             Launcher.setSuiteName(name);
             Launcher.addMIDletEntry(new MIDletEntry(name, midlet));

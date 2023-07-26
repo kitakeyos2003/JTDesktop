@@ -12,6 +12,7 @@ public class Application {
     private final short height;
     private final String[] args;
     private final String icon;
+    private String manifest;
 
     public Application(String name, Class<? extends MIDlet> midlet, short width, short height, String[] args, String icon) {
         this.name = name;
@@ -44,6 +45,12 @@ public class Application {
 
     public String getIcon() {
         return icon;
+    }
+    public String getManifest() {
+        return manifest;
+    }
+    public void setManifest(String path) {
+        this.manifest = path;
     }
 
     public void start() {

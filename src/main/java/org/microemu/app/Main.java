@@ -202,7 +202,7 @@ public class Main extends JFrame {
         app.setTitle(application.getName());
         app.validate();
         app.setVisible(true);
-        app.common.startApp(application.getName(), application.getMidlet());
+        app.common.startApp(application.getName(), application.getMidlet(), application.getManifest());
     }
 
     protected Component createContents(Container parent) {
