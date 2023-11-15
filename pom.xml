@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>JTDesktop</groupId>
     <artifactId>me.kitakeyos.jtd</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>J2meToDesktop</name>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -15,17 +15,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>sun</groupId>
-            <artifactId>applet-jsobject</artifactId>
-            <version>1.4</version>
-            <optional>true</optional>
-            <!--scope>provided</scope-->
-            <scope>system</scope>
-            <!-- There are no plugin on Linux 64-bit Java; Copy it from 32-bit java installation -->
-            <systemPath>${java.home}/lib/plugin.jar</systemPath>
-        </dependency>
-
         <dependency>
             <groupId>asm</groupId>
             <artifactId>asm</artifactId>
@@ -35,7 +24,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
 

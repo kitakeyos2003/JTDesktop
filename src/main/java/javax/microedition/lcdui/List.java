@@ -60,24 +60,13 @@ public class List extends Screen implements Choice {
         super(title);
         super.setUI(DeviceFactory.getDevice().getUIFactory().createListUI(this));
 
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidListUI")) {
-            for (int i = 0; i < stringElements.length; i++) {
-                if (imageElements == null) {
-                    append(stringElements[i], null);
-                } else {
-                    append(stringElements[i], imageElements[i]);
-                }
+        if (listType == Choice.IMPLICIT) {
+            choiceGroup = new ChoiceGroup(null, Choice.IMPLICIT, stringElements, imageElements, false);
+            for (int i = 0; i < size(); i++) {
+                set(i, getString(i), null);
             }
-            choiceGroup = new ChoiceGroup(null, listType, stringElements, imageElements, false);
         } else {
-            if (listType == Choice.IMPLICIT) {
-                choiceGroup = new ChoiceGroup(null, Choice.IMPLICIT, stringElements, imageElements, false);
-                for (int i = 0; i < size(); i++) {
-                    set(i, getString(i), null);
-                }
-            } else {
-                choiceGroup = new ChoiceGroup(null, listType, stringElements, imageElements);
-            }
+            choiceGroup = new ChoiceGroup(null, listType, stringElements, imageElements);
         }
         choiceGroup.setOwner(this);
         choiceGroup.setFocus(true);
@@ -87,11 +76,7 @@ public class List extends Screen implements Choice {
     }
 
     public int append(String stringPart, Image imagePart) {
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidListUI")) {
-            return ((ListUI) ui).append(stringPart, imagePart);
-        } else {
-            return choiceGroup.append(stringPart, imagePart);
-        }
+        return choiceGroup.append(stringPart, imagePart);
     }
 
     public void delete(int elementNum) {
@@ -119,19 +104,11 @@ public class List extends Screen implements Choice {
     }
 
     public int getSelectedIndex() {
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidListUI")) {
-            return ((ListUI) ui).getSelectedIndex();
-        } else {
-            return choiceGroup.getSelectedIndex();
-        }
+        return choiceGroup.getSelectedIndex();
     }
 
     public String getString(int elementNum) {
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidListUI")) {
-            return ((ListUI) ui).getString(elementNum);
-        } else {
-            return choiceGroup.getString(elementNum);
-        }
+        return choiceGroup.getString(elementNum);
     }
 
     public void insert(int elementNum, String stringPart, Image imagePart) {
@@ -244,20 +221,16 @@ public class List extends Screen implements Choice {
 
     void showNotify() {
         super.showNotify();
-
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidListUI")) {
-        } else {
-            int selectedItemIndex = getSelectedIndex();
-            int heightToItem = choiceGroup.getHeightToItem(selectedItemIndex);
-            int heightAfterItem = heightToItem;
-            if (selectedItemIndex >= 0) {
-                heightAfterItem += choiceGroup.getItemHeight(selectedItemIndex);
-            }
-            if (viewPortY > heightToItem) {
-                viewPortY = heightToItem;
-            } else if ((viewPortY + viewPortHeight) < heightAfterItem) {
-                viewPortY = heightAfterItem - viewPortHeight;
-            }
+        int selectedItemIndex = getSelectedIndex();
+        int heightToItem = choiceGroup.getHeightToItem(selectedItemIndex);
+        int heightAfterItem = heightToItem;
+        if (selectedItemIndex >= 0) {
+            heightAfterItem += choiceGroup.getItemHeight(selectedItemIndex);
+        }
+        if (viewPortY > heightToItem) {
+            viewPortY = heightToItem;
+        } else if ((viewPortY + viewPortHeight) < heightAfterItem) {
+            viewPortY = heightAfterItem - viewPortHeight;
         }
     }
 

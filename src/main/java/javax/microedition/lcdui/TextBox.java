@@ -27,7 +27,6 @@ import org.microemu.device.DeviceFactory;
 import org.microemu.device.InputMethod;
 import org.microemu.device.InputMethodEvent;
 import org.microemu.device.InputMethodListener;
-import org.microemu.device.ui.TextBoxUI;
 
 //TODO implement pointer events
 public class TextBox extends Screen {
@@ -74,11 +73,7 @@ public class TextBox extends Screen {
     }
 
     public int getCaretPosition() {
-        if (ui != null && ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidTextBoxUI")) {
-            return ((TextBoxUI) ui).getCaretPosition();
-        } else {
-            return tf.getCaretPosition();
-        }
+        return tf.getCaretPosition();
     }
 
     public int getChars(char[] data) {
@@ -94,11 +89,7 @@ public class TextBox extends Screen {
     }
 
     public String getString() {
-        if (ui != null && ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidTextBoxUI")) {
-            return ((TextBoxUI) ui).getString();
-        } else {
-            return tf.getString();
-        }
+        return tf.getString();
     }
 
     public void insert(char[] data, int offset, int length, int position) {
@@ -126,11 +117,7 @@ public class TextBox extends Screen {
     }
 
     public void setString(String text) {
-        if (ui != null && ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidTextBoxUI")) {
-            ((TextBoxUI) ui).setString(text);
-        } else {
-            tf.setString(text);
-        }
+        tf.setString(text);
     }
 
     public void setTicker(Ticker ticker) {

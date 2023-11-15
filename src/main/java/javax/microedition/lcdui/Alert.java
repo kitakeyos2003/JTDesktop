@@ -166,10 +166,6 @@ public class Alert extends Screen {
     }
 
     public void setString(String str) {
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidAlertUI")) {
-            ((AlertUI) ui).setString(str);
-        }
-
         if (alertContent == null) {
             alertContent = new ImageStringItem(null, null, str);
         }

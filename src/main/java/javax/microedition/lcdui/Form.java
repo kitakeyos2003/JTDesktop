@@ -58,11 +58,6 @@ public class Form extends Screen {
 
     public int append(Item item) {
         verifyItem(item);
-
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidFormUI")) {
-            ((FormUI) ui).append(item);
-        }
-
         if (numOfItems + 1 >= items.length) {
             Item[] newitems = new Item[numOfItems + 4];
             System.arraycopy(items, 0, newitems, 0, numOfItems);
@@ -77,10 +72,6 @@ public class Form extends Screen {
     }
 
     public int append(Image img) {
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidFormUI")) {
-            ((FormUI) ui).append(new ImageItem(null, img, ImageItem.LAYOUT_DEFAULT, null));
-        }
-
         return append(new ImageItem(null, img, ImageItem.LAYOUT_DEFAULT, null));
     }
 
@@ -88,21 +79,11 @@ public class Form extends Screen {
         if (str == null) {
             throw new NullPointerException();
         }
-
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidFormUI")) {
-            ((FormUI) ui).append(new StringItem(null, str));
-        }
-
         return append(new StringItem(null, str));
     }
 
     public void delete(int itemNum) {
         verifyItemNum(itemNum);
-
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidFormUI")) {
-            ((FormUI) ui).delete(itemNum);
-        }
-
         items[itemNum].setOwner(null);
         System.arraycopy(items, itemNum + 1, items, itemNum, numOfItems - itemNum - 1);
         numOfItems--;
@@ -111,10 +92,6 @@ public class Form extends Screen {
     }
 
     public void deleteAll() {
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidFormUI")) {
-            ((FormUI) ui).deleteAll();
-        }
-
         for (int i = 0; i < numOfItems; i++) {
             items[i].setOwner(null);
         }
@@ -142,11 +119,6 @@ public class Form extends Screen {
             verifyItemNum(itemNum);
         }
         verifyItem(item);
-
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidFormUI")) {
-            ((FormUI) ui).insert(itemNum, item);
-        }
-
         if (numOfItems + 1 == items.length) {
             Item[] newitems = new Item[numOfItems + 4];
             System.arraycopy(items, 0, newitems, 0, numOfItems);
@@ -168,11 +140,6 @@ public class Form extends Screen {
     public void set(int itemNum, Item item) {
         verifyItemNum(itemNum);
         verifyItem(item);
-
-        if (ui.getClass().getName().equals("org.microemu.android.device.ui.AndroidFormUI")) {
-            ((FormUI) ui).set(itemNum, item);
-        }
-
         // TODO add this to MIDP1
         items[itemNum].setOwner(null);
 
