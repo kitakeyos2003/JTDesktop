@@ -101,16 +101,16 @@ public class J2SESystemFont implements J2SEFont {
     private synchronized void checkInitialized() {
         if (!initialized) {
             int awtStyle = 0;
-            if (style.indexOf("plain") != -1) {
+            if (style.contains("plain")) {
                 awtStyle |= Font.PLAIN;
             }
-            if (style.indexOf("bold") != -1) {
+            if (style.contains("bold")) {
                 awtStyle |= Font.BOLD;
             }
-            if (style.indexOf("italic") != -1) {
+            if (style.contains("italic")) {
                 awtStyle |= Font.ITALIC;
             }
-            if (style.indexOf("underlined") != -1) {
+            if (style.contains("underlined")) {
                 // TODO underlined style not implemented
             }
             if (antialiasing) {

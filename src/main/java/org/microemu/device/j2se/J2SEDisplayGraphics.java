@@ -394,40 +394,54 @@ public class J2SEDisplayGraphics extends javax.microedition.lcdui.Graphics imple
         g.setTransform(savedT);
     }
 
-    public void drawRGB(int[] rgbData, int offset, int scanlength, int x, int y, int width, int height,
-            boolean processAlpha) {
-        // this is less than ideal in terms of memory
-        // but it's the easiest way
-
+    public void drawRGB(int[] rgbData, int offset, int scanlength, int x, int y, int width, int height, boolean processAlpha) {
         if (rgbData == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("rgbData is null");
         }
-
         if (width == 0 || height == 0) {
             return;
         }
-
-        int l = rgbData.length;
-
-        if (width < 0 || height < 0 || offset < 0 || offset >= l || (scanlength < 0 && scanlength * (height - 1) < 0)
-                || (scanlength >= 0 && scanlength * (height - 1) + width - 1 >= l)) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-
         BufferedImage targetImage = (BufferedImage) ((J2SEMutableImage) image).getImage();
-        if (!processAlpha) {
-            int[] rgb = new int[width * height];
-            for (int row = 0; row < height; row++) {
-                for (int px = 0; px < width; px++) {
-                    rgb[row * width + px] = rgbData[offset + px] | 0xff000000;
-                }
-                offset += scanlength;
-            }
-            targetImage.setRGB(x, y, width, height, rgb, 0, width);
-        } else {
-            targetImage.setRGB(x, y, width, height, rgbData, offset, scanlength);
+
+        // Adjust width and height if they are larger than the target image
+        if (x < 0) {
+            offset -= x;  // Adjust offset for left clipping
+            width += x;
+            x = 0;
         }
+        if (y < 0) {
+            offset -= y * scanlength;  // Adjust offset for top clipping
+            height += y;
+            y = 0;
+        }
+        if (x + width > targetImage.getWidth()) {
+            width = targetImage.getWidth() - x;  // Clip the width to fit within the image
+        }
+        if (y + height > targetImage.getHeight()) {
+            height = targetImage.getHeight() - y;  // Clip the height to fit within the image
+        }
+
+        if (width <= 0 || height <= 0) {
+            return;  // No valid area to draw
+        }
+
+        // Prepare the pixel array with alpha correction if needed
+        int[] pixels = new int[height * width];
+        int alphaCorrection = processAlpha ? 0 : 0xFF000000; // Full opacity if alpha not processed
+
+        for (int i = 0; i < height; i++) {
+            int s = offset + i * scanlength;
+            int d = i * width;
+            for (int j = 0; j < width; j++) {
+                int pixel = rgbData[s++];
+                pixels[d + j] = alphaCorrection | pixel;
+            }
+        }
+
+        // Draw the pixels to the target image
+        targetImage.setRGB(x, y, width, height, pixels, 0, width);
     }
+
 
     public void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
         int[] xPoints = new int[3];

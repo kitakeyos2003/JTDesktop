@@ -5,14 +5,38 @@
     xmlns="http://maven.apache.org/POM/4.0.0">
     <!-- @version $Revision: 2281 $ ($Author: skarzhevskyy $) $Date: 2010-01-14 10:50:10 -0500 (Thu, 14 Jan 2010) $ -->
     <modelVersion>4.0.0</modelVersion>
-    <groupId>JTDesktop</groupId>
-    <artifactId>me.kitakeyos.jtd</artifactId>
-    <version>0.0.2</version>
-    <name>J2meToDesktop</name>
+    <groupId>me.kitakeyos.jtd</groupId>
+    <artifactId>jtd</artifactId>
+    <version>0.0.4</version>
+    <packaging>jar</packaging>
+    <name>J2METoDesktop</name>
+    <description>J2ME to Java Swing</description>
+    <url>https://github.com/kitakeyos2003/JTDesktop</url>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>kitakeyos2003</id>
+            <name>Hoang Huu Dung</name>
+            <email>kitakeyos@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/kitakeyos2003/JTDesktop.git</connection>
+        <developerConnection>scm:git:ssh://github.com/kitakeyos2003/JTDesktop.git</developerConnection>
+        <url>https://github.com/kitakeyos2003/JTDesktop</url>
+    </scm>
 
     <dependencies>
         <dependency>
@@ -36,5 +60,19 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

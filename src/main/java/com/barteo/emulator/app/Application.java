@@ -14,13 +14,13 @@ public class Application {
     private final String icon;
     private String manifest;
 
-    public Application(String name, Class<? extends MIDlet> midlet, short width, short height, String[] args, String icon) {
+    public Application(String name, Class<? extends MIDlet> midlet, short width, short height, String icon, String[] args) {
         this.name = name;
         this.midlet = midlet;
         this.width = width;
         this.height = height;
-        this.args = args;
         this.icon = icon;
+        this.args = args;
     }
 
     public String getName() {

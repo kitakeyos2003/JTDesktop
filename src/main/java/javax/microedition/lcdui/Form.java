@@ -1,23 +1,23 @@
 /*
- * MicroEmulator 
+ * MicroEmulator
  * Copyright (C) 2001 Bartek Teodorczyk <barteo@barteo.net>
  *  Copyright (C) 2005 Andres Navarro
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
  * Free Software Foundation; either version 2.1 of the License, or (at your
  * option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
  * for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation,
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- * 
- * Contributor(s): 
+ *
+ * Contributor(s):
  *   3GLab
  */
 package javax.microedition.lcdui;
@@ -250,19 +250,19 @@ public class Form extends Screen {
                 height = getHeightToItem(testItemIndex);
                 traverse
                         = items[testItemIndex].traverse(
-                                gameKeyCode,
-                                top - height,
-                                bottom - height,
-                                false);
+                        gameKeyCode,
+                        top - height,
+                        bottom - height,
+                        false);
             } else {
                 testItemIndex = focusItemIndex;
                 height = getHeightToItem(testItemIndex);
                 traverse
                         = items[testItemIndex].traverse(
-                                gameKeyCode,
-                                top - height,
-                                bottom - height,
-                                true);
+                        gameKeyCode,
+                        top - height,
+                        bottom - height,
+                        true);
             }
             if (traverse != Item.OUTOFITEM) {
                 if (focusItemIndex == -1
@@ -287,10 +287,10 @@ public class Form extends Screen {
                             height = getHeightToItem(i);
                             traverse
                                     = items[i].traverse(
-                                            gameKeyCode,
-                                            top - height,
-                                            bottom - height,
-                                            false);
+                                    gameKeyCode,
+                                    top - height,
+                                    bottom - height,
+                                    false);
                             if (traverse == Item.OUTOFITEM) {
                                 return 0;
                             } else {
@@ -302,10 +302,10 @@ public class Form extends Screen {
                     height = getHeightToItem(topItemIndex);
                     traverse
                             = items[topItemIndex].traverse(
-                                    gameKeyCode,
-                                    top - height,
-                                    bottom - height,
-                                    false);
+                            gameKeyCode,
+                            top - height,
+                            bottom - height,
+                            false);
                     if (traverse == Item.OUTOFITEM) {
                     } else {
                         // Sprawdzenie czy znajduje sie powyzej na ekranie
@@ -329,19 +329,19 @@ public class Form extends Screen {
                 height = getHeightToItem(testItemIndex);
                 traverse
                         = items[testItemIndex].traverse(
-                                gameKeyCode,
-                                top - height,
-                                bottom - height,
-                                false);
+                        gameKeyCode,
+                        top - height,
+                        bottom - height,
+                        false);
             } else {
                 testItemIndex = focusItemIndex;
                 height = getHeightToItem(testItemIndex);
                 traverse
                         = items[testItemIndex].traverse(
-                                gameKeyCode,
-                                top - height,
-                                bottom - height,
-                                true);
+                        gameKeyCode,
+                        top - height,
+                        bottom - height,
+                        true);
             }
             if (traverse != Item.OUTOFITEM) {
                 if (focusItemIndex == -1
@@ -366,10 +366,10 @@ public class Form extends Screen {
                             height = getHeightToItem(i);
                             traverse
                                     = items[i].traverse(
-                                            gameKeyCode,
-                                            top - height,
-                                            bottom - height,
-                                            false);
+                                    gameKeyCode,
+                                    top - height,
+                                    bottom - height,
+                                    false);
                             if (traverse == Item.OUTOFITEM) {
                                 return 0;
                             } else {
@@ -381,10 +381,10 @@ public class Form extends Screen {
                     height = getHeightToItem(bottomItemIndex);
                     traverse
                             = items[bottomItemIndex].traverse(
-                                    gameKeyCode,
-                                    top - height,
-                                    bottom - height,
-                                    false);
+                            gameKeyCode,
+                            top - height,
+                            bottom - height,
+                            false);
                     if (traverse == Item.OUTOFITEM) {
                     } else {
                         // Sprawdzenie czy znajduje sie powyzej na ekranie
