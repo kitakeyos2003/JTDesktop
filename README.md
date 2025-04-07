@@ -40,7 +40,7 @@ Then, add the dependency:
 <dependency>
     <groupId>com.github.kitakeyos2003</groupId>
     <artifactId>JTDesktop</artifactId>
-    <version>1.0.0</version> <!-- Replace with the latest version -->
+    <version>0.0.4-alpha</version>
 </dependency>
 ```  
 
